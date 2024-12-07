@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hairdresser_Website.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Hairdresser_Website.Controllers
 {
@@ -14,9 +15,6 @@ namespace Hairdresser_Website.Controllers
         }
         public IActionResult AIHair()
         {
-            return View();
-        }
-        public IActionResult Admin() { 
             return View();
         }
     }

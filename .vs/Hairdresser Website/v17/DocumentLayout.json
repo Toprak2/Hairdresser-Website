@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\admin\\correctlogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\admin\\correctlogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\admin\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\admin\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\models\\adminlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:models\\adminlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\home\\aihair.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -19,12 +27,16 @@
       "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\home\\appointment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\home\\appointment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\home\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\home\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\home\\appointment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\home\\appointment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,24 +46,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "CorrectLogin.cshtml",
+              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\CorrectLogin.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\CorrectLogin.cshtml",
+              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\CorrectLogin.cshtml",
+              "RelativeToolTip": "Views\\Admin\\CorrectLogin.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T22:53:01.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAzwBoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T22:46:55.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AdminLogin.cs",
+              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Models\\AdminLogin.cs",
+              "RelativeDocumentMoniker": "Models\\AdminLogin.cs",
+              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Models\\AdminLogin.cs",
+              "RelativeToolTip": "Models\\AdminLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T22:15:54.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Admin.cshtml",
-              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Home\\Admin.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Admin.cshtml",
-              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Home\\Admin.cshtml",
-              "RelativeToolTip": "Views\\Home\\Admin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\Admin.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\Admin.cshtml",
+              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\Admin.cshtml",
+              "RelativeToolTip": "Views\\Admin\\Admin.cshtml",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAIAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-07T21:51:42.137Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
@@ -64,7 +115,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T21:38:42.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwBIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-07T21:37:50.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "AIHair.cshtml",
+              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Home\\AIHair.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\AIHair.cshtml",
+              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Home\\AIHair.cshtml",
+              "RelativeToolTip": "Views\\Home\\AIHair.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T21:38:48.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Appointment.cshtml",
               "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Home\\Appointment.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Appointment.cshtml",
@@ -73,45 +163,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-07T21:38:57.929Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AIHair.cshtml",
-              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Home\\AIHair.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\AIHair.cshtml",
-              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Home\\AIHair.cshtml",
-              "RelativeToolTip": "Views\\Home\\AIHair.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-07T21:38:48.735Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-07T21:38:42.33Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-07T21:37:50.109Z",
               "EditorCaption": ""
             }
           ]
