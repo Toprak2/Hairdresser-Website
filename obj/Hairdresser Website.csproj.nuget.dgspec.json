@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MAT\\Desktop\\Web dev\\Hairdresser Website\\Hairdresser Website.csproj": {}
+    "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Hairdresser Website.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MAT\\Desktop\\Web dev\\Hairdresser Website\\Hairdresser Website.csproj": {
+    "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Hairdresser Website.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MAT\\Desktop\\Web dev\\Hairdresser Website\\Hairdresser Website.csproj",
+        "projectUniqueName": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Hairdresser Website.csproj",
         "projectName": "Hairdresser Website",
-        "projectPath": "C:\\Users\\MAT\\Desktop\\Web dev\\Hairdresser Website\\Hairdresser Website.csproj",
-        "packagesPath": "C:\\Users\\MAT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MAT\\Desktop\\Web dev\\Hairdresser Website\\obj\\",
+        "projectPath": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Hairdresser Website.csproj",
+        "packagesPath": "C:\\Users\\isken\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\MAT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\isken\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,11 +38,23 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.18, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
