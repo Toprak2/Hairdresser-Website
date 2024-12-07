@@ -16,5 +16,8 @@ namespace Hairdresser_Website.Controllers
         {
             return View();
         }
+        public IActionResult Admin() { 
+            return View();
+        }
     }
 }
