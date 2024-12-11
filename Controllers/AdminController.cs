@@ -25,5 +25,18 @@ namespace Hairdresser_Website.Controllers
             }
             return RedirectToAction("Admin");
         }
+
+
+        [HttpGet]
+        public IActionResult User()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult User(UserLogin login)
+        {
+            return View(login);
+        }
     }
 }
