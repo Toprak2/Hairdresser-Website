@@ -21,7 +21,7 @@ namespace Hairdresser_Website.Controllers
         {
             if ((login.Username == "b221210587@ogr.sakarya.edu.tr" && login.Password == "iskenderpassword") || (login.Username == "b221210058@sakary.edu.tr") && login.Password == "muhammedpassword")
             {
-                return RedirectToAction("CorrectLogin");
+                return View("CorrectLoginAdmin");
             }
             return RedirectToAction("Admin");
         }
@@ -36,7 +36,7 @@ namespace Hairdresser_Website.Controllers
         [HttpPost]
         public IActionResult User(UserLogin login)
         {
-            return View(login);
+            return View("CorrectLoginUser");
         }
     }
 }

@@ -24,8 +24,12 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/isken/OneDrive/Desktop/Files/Web/Hairdresser-Website/Views/Admin/CorrectLogin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29ycmVjdExvZ2luLmNzaHRtbA==
+[C:/Users/isken/OneDrive/Desktop/Files/Web/Hairdresser-Website/Views/Admin/CorrectLoginAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29ycmVjdExvZ2luQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/isken/OneDrive/Desktop/Files/Web/Hairdresser-Website/Views/Admin/CorrectLoginUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29ycmVjdExvZ2luVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/isken/OneDrive/Desktop/Files/Web/Hairdresser-Website/Views/Admin/User.cshtml]
@@ -44,6 +48,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/isken/OneDrive/Desktop/Files/Web/Hairdresser-Website/Views/NewUser/NewUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3VXNlclxOZXdVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/isken/OneDrive/Desktop/Files/Web/Hairdresser-Website/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/isken/OneDrive/Desktop/Files/Web/Hairdresser-Website/Views/Shared/_Layout1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
