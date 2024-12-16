@@ -457,7 +457,7 @@ Thumbs.db
 ehthumbs.db
 ehthumbs_vista.db
 
-# Dump file
+# Dump file 
 *.stackdump
 
 # Folder config file
@@ -475,3 +475,26 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+bin/
+obj/
+
+# Visual Studio specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider specific files
+.idea/
+
+# NuGet Packages
+*.nupkg
+packages/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
