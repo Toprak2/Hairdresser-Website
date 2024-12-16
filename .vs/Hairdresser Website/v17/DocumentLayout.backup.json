@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\admin\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\admin\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\admin\\correctloginuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\admin\\correctloginuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\admin\\correctloginadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\admin\\correctloginadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|c:\\users\\isken\\onedrive\\desktop\\files\\web\\hairdresser-website\\views\\admin\\user.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B06CF0CC-611B-436E-B698-E001B0DA8F17}|Hairdresser Website.csproj|solutionrelative:views\\admin\\user.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CorrectLoginUser.cshtml",
-              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\CorrectLoginUser.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\CorrectLoginUser.cshtml",
-              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\CorrectLoginUser.cshtml",
-              "RelativeToolTip": "Views\\Admin\\CorrectLoginUser.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "User.cshtml",
+              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\User.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\User.cshtml",
+              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\User.cshtml",
+              "RelativeToolTip": "Views\\Admin\\User.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-16T13:20:19.81Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CorrectLoginAdmin.cshtml",
-              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\CorrectLoginAdmin.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\CorrectLoginAdmin.cshtml",
-              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\CorrectLoginAdmin.cshtml",
-              "RelativeToolTip": "Views\\Admin\\CorrectLoginAdmin.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-16T13:19:58.505Z",
+              "WhenOpened": "2024-12-16T13:26:57.278Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAYwCYAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T13:18:31.887Z",
+              "Title": "Admin.cshtml",
+              "DocumentMoniker": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\Admin.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\Admin.cshtml",
+              "ToolTip": "C:\\Users\\isken\\OneDrive\\Desktop\\Files\\Web\\Hairdresser-Website\\Views\\Admin\\Admin.cshtml",
+              "RelativeToolTip": "Views\\Admin\\Admin.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-16T13:26:49.89Z",
               "EditorCaption": ""
             }
           ]
