@@ -1,42 +1,15 @@
-﻿using Hairdresser_Website.Models;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hairdresser_Website.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
-        public IActionResult CorrectLogin()
+        [Authorize(Roles = "admin")]
+        public IActionResult Index()
         {
             return View();
-        }
-
-        [HttpGet]
-        public IActionResult Admin()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Admin(AdminLogin login)
-        {
-            if ((login.Username == "b221210587@ogr.sakarya.edu.tr" && login.Password == "iskenderpassword") || (login.Username == "b221210058@sakary.edu.tr") && login.Password == "muhammedpassword")
-            {
-                return View("CorrectLoginAdmin");
-            }
-            return RedirectToAction("Admin");
-        }
-
-
-        [HttpGet]
-        public IActionResult User()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult User(UserLogin login)
-        {
-            return View("CorrectLoginUser");
         }
     }
 }
