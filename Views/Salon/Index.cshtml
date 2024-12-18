@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<Hairdresser_Website.Models.Salon>
+
+<h2>Salons</h2>
+<a href="/Salon/Create" class="btn btn-primary mb-3">Add Salon</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Working Hours</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var salon in Model)
+        {
+            <tr>
+                <td>@salon.Name</td>
+                <td>@salon.Location</td>
+                <td>@salon.WorkingHours</td>
+                <td>
+                    <a href="/Salon/Edit/@salon.SalonId" class="btn btn-warning">Edit</a>
+                    <a href="/Salon/Delete/@salon.SalonId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
