@@ -3,6 +3,7 @@ using Hairdresser_Website.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hairdresser_Website.Controllers
 {
@@ -15,18 +16,18 @@ namespace Hairdresser_Website.Controllers
         {
             _context = context;
         }
-
         public IActionResult Index()
         {
-            var employees = _context.Employees.ToList();
+            var employees = _context.Employees
+                .Include(e => e.Salon)  // This loads the Salon data
+                .ToList();
             return View(employees);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            var salons = _context.Salons.ToList(); // Add this line
-            System.Diagnostics.Debug.WriteLine($"Salon Count: {salons.Count}"); // And this one
+            var salons = _context.Salons.ToList();
             ViewBag.Salons = new SelectList(_context.Salons, "SalonId", "Name");
             return View();
         }
@@ -34,11 +35,22 @@ namespace Hairdresser_Website.Controllers
         [HttpPost]
         public IActionResult Create(Employee employee)
         {
+
+            ModelState.Remove("Salon");
+            ModelState.Remove("Appointments");
+
             if (ModelState.IsValid)
             {
                 _context.Employees.Add(employee);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var modelError in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine($"ModelState error: {modelError.ErrorMessage}");
+                }
             }
 
             ViewBag.Salons = new SelectList(_context.Salons, "SalonId", "Name", employee.SalonId);
@@ -60,9 +72,27 @@ namespace Hairdresser_Website.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Employees.Update(employee);
+                var existingEmployee = _context.Employees.Find(employee.EmployeeId);
+                if (existingEmployee == null)
+                {
+                    return NotFound();
+                }
+
+                // Update the properties
+                existingEmployee.Name = employee.Name;
+                existingEmployee.Expertise = employee.Expertise;
+                existingEmployee.Availability = employee.Availability;
+                existingEmployee.SalonId = employee.SalonId;
+
                 _context.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var modelError in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine($"ModelState error: {modelError.ErrorMessage}");
+                }
             }
 
             ViewBag.Salons = new SelectList(_context.Salons, "SalonId", "Name", employee.SalonId);
@@ -72,7 +102,10 @@ namespace Hairdresser_Website.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var employee = _context.Employees.Find(id);
+            var employee = _context.Employees
+                .Include(e => e.Salon)
+                .FirstOrDefault(e => e.EmployeeId == id);
+
             if (employee == null) return NotFound();
 
             return View(employee);

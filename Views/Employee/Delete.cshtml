@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Hairdresser_Website.Models.Employee
+
+<h2>Delete Employee</h2>
+
+<p>Are you sure you want to delete the following employee?</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Expertise</th>
+        <td>@Model.Expertise</td>
+    </tr>
+    <tr>
+        <th>Availability</th>
+        <td>@Model.Availability</td>
+    </tr>
+    <tr>
+        <th>Salon</th>
+        <td>@Model.Salon.Name</td>
+    </tr>
+</table>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/Employee/Index" class="btn btn-secondary">Cancel</a>
+</form>
