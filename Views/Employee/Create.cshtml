@@ -7,7 +7,7 @@
 
 <h2>Add Employee</h2>
 
-<form method="post">
+<form method="post" asp-controller="Employee" asp-action="Create">
     <div class="form-group">
         <label>Name</label>
         <input type="text" asp-for="Name" class="form-control" required />
@@ -22,7 +22,10 @@
     </div>
     <div class="form-group">
         <label>Salon</label>
-        <select asp-for="SalonId" asp-items="@ViewBag.Salons" class="form-control"></select>
+        <select asp-for="SalonId" class="form-control" asp-items="ViewBag.Salons">
+            <option value="">-- Select a Salon --</option>
+        </select>
+        <span asp-validation-for="SalonId" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary mt-3">Save</button>
 </form>
