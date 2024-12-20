@@ -78,10 +78,23 @@ namespace Hairdresser_Website.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Salons.Update(salon);
+                var existingSalon = _context.Salons.Find(salon.SalonId);
+                if (existingSalon == null)
+                {
+                    return NotFound();
+                }
+
+                // Update fields
+                existingSalon.Name = salon.Name;
+                existingSalon.Location = salon.Location;
+                existingSalon.WorkingHours = salon.WorkingHours;
+
+                _context.Salons.Update(existingSalon);
                 _context.SaveChanges();
+
                 return RedirectToAction("Index");
             }
+
             return View(salon);
         }
 

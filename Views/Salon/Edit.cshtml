@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Hairdresser_Website.Models.Salon
+
+<h2>Edit Salon</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="SalonId" />
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" asp-for="Name" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Location</label>
+        <input type="text" asp-for="Location" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Working Hours</label>
+        <input type="text" asp-for="WorkingHours" class="form-control" placeholder="e.g., 09:00-18:00" required />
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Save</button>
+</form>

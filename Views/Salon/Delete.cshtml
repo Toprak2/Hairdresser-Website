@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Hairdresser_Website.Models.Salon
+
+<h2>Delete Salon</h2>
+
+<p>Are you sure you want to delete the following salon?</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Location</th>
+        <td>@Model.Location</td>
+    </tr>
+    <tr>
+        <th>Working Hours</th>
+        <td>@Model.WorkingHours</td>
+    </tr>
+</table>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/Salon/Index" class="btn btn-secondary">Cancel</a>
+</form>
