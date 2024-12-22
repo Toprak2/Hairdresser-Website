@@ -5,23 +5,56 @@
 
 <h2>Edit Employee</h2>
 
-<form method="post">
+<form method="post" asp-controller="Employee" asp-action="Edit">
     <input type="hidden" asp-for="EmployeeId" />
+
     <div class="form-group">
-        <label>Name</label>
+        <label asp-for="Name">Name</label>
         <input type="text" asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label>Expertise</label>
+        <label asp-for="Expertise">Expertise</label>
         <input type="text" asp-for="Expertise" class="form-control" required />
+        <span asp-validation-for="Expertise" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label>Availability</label>
-        <input type="text" asp-for="Availability" class="form-control" placeholder="e.g., 09:00-12:00" required />
+        <label asp-for="SalonId">Salon</label>
+        <select asp-for="SalonId" class="form-control" asp-items="ViewBag.Salons">
+            <option value="">-- Select a Salon --</option>
+        </select>
+        <span asp-validation-for="SalonId" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label>Salon</label>
-        <select asp-for="SalonId" asp-items="ViewBag.Salons" class="form-control"></select>
-    </div>
+
+    <h4>Availability</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Day of Week</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+        </thead>
+        <tbody id="availabilityTable">
+            @for (int i = 0; i < 7; i++)
+            {
+                var dayOfWeek = (Hairdresser_Website.Models.DayOfWeek)i;
+                var availability = Model.EmployeeAvailabilities?.FirstOrDefault(a => a.DayOfWeek == dayOfWeek);
+                <tr>
+                    <td>
+                        <input type="hidden" name="EmployeeAvailabilities[@i].DayOfWeek" value="@dayOfWeek" />
+                        @dayOfWeek
+                    </td>
+                    <td>
+                        <input type="time" name="EmployeeAvailabilities[@i].StartTime" value="@(availability?.StartTime.ToString(@"hh\:mm"))" class="form-control" />
+                    </td>
+                    <td>
+                        <input type="time" name="EmployeeAvailabilities[@i].EndTime" value="@(availability?.EndTime.ToString(@"hh\:mm"))" class="form-control" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
     <button type="submit" class="btn btn-primary mt-3">Save</button>
 </form>

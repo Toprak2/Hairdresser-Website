@@ -9,23 +9,100 @@
 
 <form method="post" asp-controller="Employee" asp-action="Create">
     <div class="form-group">
-        <label>Name</label>
+        <label asp-for="Name">Name</label>
         <input type="text" asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label>Expertise</label>
+        <label asp-for="Expertise">Expertise</label>
         <input type="text" asp-for="Expertise" class="form-control" required />
+        <span asp-validation-for="Expertise" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label>Availability</label>
-        <input type="text" asp-for="Availability" class="form-control" placeholder="e.g., 09:00-12:00" required />
-    </div>
-    <div class="form-group">
-        <label>Salon</label>
+        <label asp-for="SalonId">Salon</label>
         <select asp-for="SalonId" class="form-control" asp-items="ViewBag.Salons">
             <option value="">-- Select a Salon --</option>
         </select>
         <span asp-validation-for="SalonId" class="text-danger"></span>
     </div>
+
+    <h4>Availability</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Day of Week</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+        </thead>
+        <tbody id="availabilityTable">
+            @for (int i = 0; i < 7; i++)
+            {
+                <tr>
+                    <td>
+                        <input type="hidden" name="EmployeeAvailabilities[@i].DayOfWeek" value="@((Hairdresser_Website.Models.DayOfWeek)i)" />
+                        @((Hairdresser_Website.Models.DayOfWeek)i)
+                    </td>
+                    <td>
+                        @if (i == 0)
+                        {
+                            <input type="time" id="mondayStartTime" name="EmployeeAvailabilities[@i].StartTime" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="time" name="EmployeeAvailabilities[@i].StartTime" class="form-control" />
+                        }
+                    </td>
+                    <td>
+                        @if (i == 0)
+                        {
+                            <input type="time" id="mondayEndTime" name="EmployeeAvailabilities[@i].EndTime" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="time" name="EmployeeAvailabilities[@i].EndTime" class="form-control" />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
     <button type="submit" class="btn btn-primary mt-3">Save</button>
 </form>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Function to fill other days based on Monday's values
+        function fillOtherDays() {
+            var mondayStartTime = document.getElementById("mondayStartTime").value;
+            var mondayEndTime = document.getElementById("mondayEndTime").value;
+
+            for (var i = 1; i < 7; i++) {
+                var startTimeInput = document.querySelector("input[name='EmployeeAvailabilities[" + i + "].StartTime']");
+                var endTimeInput = document.querySelector("input[name='EmployeeAvailabilities[" + i + "].EndTime']");
+
+                // Only fill if the fields are empty
+                if (!startTimeInput.value) {
+                    startTimeInput.value = mondayStartTime;
+                }
+                if (!endTimeInput.value) {
+                    endTimeInput.value = mondayEndTime;
+                }
+            }
+        }
+
+        // Get the Monday start and end time input elements
+        var mondayStartTimeInput = document.getElementById("mondayStartTime");
+        var mondayEndTimeInput = document.getElementById("mondayEndTime");
+
+        // Attach the function to the 'change' event of Monday's input fields
+        if (mondayStartTimeInput) {
+            mondayStartTimeInput.addEventListener("change", fillOtherDays);
+        }
+        if (mondayEndTimeInput) {
+            mondayEndTimeInput.addEventListener("change", fillOtherDays);
+        }
+    });
+</script>

@@ -18,15 +18,31 @@
     </tr>
     <tr>
         <th>Availability</th>
-        <td>@Model.Availability</td>
+        <td>
+            @if (Model.EmployeeAvailabilities != null && Model.EmployeeAvailabilities.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var availability in Model.EmployeeAvailabilities.OrderBy(a => a.DayOfWeek))
+                    {
+                        <li class="list-group-item">
+                            @availability.DayOfWeek: @availability.StartTime.ToString(@"hh\:mm") - @availability.EndTime.ToString(@"hh\:mm")
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span class="text-muted">Not specified</span>
+            }
+        </td>
     </tr>
     <tr>
         <th>Salon</th>
-        <td>@Model.Salon.Name</td>
+        <td>@Model.Salon?.Name</td>
     </tr>
 </table>
 
-<form method="post">
+<form method="post" asp-action="Delete" asp-route-id="@Model.EmployeeId">
     <button type="submit" class="btn btn-danger">Delete</button>
     <a href="/Employee/Index" class="btn btn-secondary">Cancel</a>
 </form>

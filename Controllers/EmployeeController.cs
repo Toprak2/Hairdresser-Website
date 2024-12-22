@@ -1,9 +1,9 @@
 ﻿using Hairdresser_Website.Data;
 using Hairdresser_Website.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore; // Don't forget to include this
 
 namespace Hairdresser_Website.Controllers
 {
@@ -16,10 +16,12 @@ namespace Hairdresser_Website.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
             var employees = _context.Employees
-                .Include(e => e.Salon)  // This loads the Salon data
+                .Include(e => e.Salon)
+                .Include(e => e.EmployeeAvailabilities) // Eagerly load Availabilities
                 .ToList();
             return View(employees);
         }
@@ -27,7 +29,6 @@ namespace Hairdresser_Website.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var salons = _context.Salons.ToList();
             ViewBag.Salons = new SelectList(_context.Salons, "SalonId", "Name");
             return View();
         }
@@ -35,22 +36,23 @@ namespace Hairdresser_Website.Controllers
         [HttpPost]
         public IActionResult Create(Employee employee)
         {
-
+            // Remove validation errors for navigation properties
             ModelState.Remove("Salon");
             ModelState.Remove("Appointments");
+
+            if (employee.EmployeeAvailabilities != null)
+            {
+                for (int i = 0; i < employee.EmployeeAvailabilities.Count; i++)
+                {
+                    ModelState.Remove($"EmployeeAvailabilities[{i}].Employee");
+                }
+            }
 
             if (ModelState.IsValid)
             {
                 _context.Employees.Add(employee);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            else
-            {
-                foreach (var modelError in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine($"ModelState error: {modelError.ErrorMessage}");
-                }
             }
 
             ViewBag.Salons = new SelectList(_context.Salons, "SalonId", "Name", employee.SalonId);
@@ -60,7 +62,10 @@ namespace Hairdresser_Website.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var employee = _context.Employees.Find(id);
+            var employee = _context.Employees
+                .Include(e => e.EmployeeAvailabilities)
+                .FirstOrDefault(e => e.EmployeeId == id);
+
             if (employee == null) return NotFound();
 
             ViewBag.Salons = new SelectList(_context.Salons, "SalonId", "Name", employee.SalonId);
@@ -70,29 +75,52 @@ namespace Hairdresser_Website.Controllers
         [HttpPost]
         public IActionResult Edit(Employee employee)
         {
+            // Remove validation errors for navigation properties
+            ModelState.Remove("Salon");
+            ModelState.Remove("Appointments");
+
+            if (employee.EmployeeAvailabilities != null)
+            {
+                for (int i = 0; i < employee.EmployeeAvailabilities.Count; i++)
+                {
+                    ModelState.Remove($"EmployeeAvailabilities[{i}].Employee");
+                }
+            }
+
             if (ModelState.IsValid)
             {
-                var existingEmployee = _context.Employees.Find(employee.EmployeeId);
+                var existingEmployee = _context.Employees
+                    .Include(e => e.EmployeeAvailabilities)
+                    .FirstOrDefault(e => e.EmployeeId == employee.EmployeeId);
+
                 if (existingEmployee == null)
                 {
                     return NotFound();
                 }
 
-                // Update the properties
+                // Update scalar properties
                 existingEmployee.Name = employee.Name;
                 existingEmployee.Expertise = employee.Expertise;
-                existingEmployee.Availability = employee.Availability;
                 existingEmployee.SalonId = employee.SalonId;
+
+                // Update availabilities
+                foreach (var existingAvailability in existingEmployee.EmployeeAvailabilities.ToList())
+                {
+                    _context.Remove(existingAvailability);
+                }
+
+                foreach (var availability in employee.EmployeeAvailabilities)
+                {
+                    existingEmployee.EmployeeAvailabilities.Add(new EmployeeAvailability
+                    {
+                        DayOfWeek = availability.DayOfWeek,
+                        StartTime = availability.StartTime,
+                        EndTime = availability.EndTime
+                    });
+                }
 
                 _context.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            else
-            {
-                foreach (var modelError in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine($"ModelState error: {modelError.ErrorMessage}");
-                }
             }
 
             ViewBag.Salons = new SelectList(_context.Salons, "SalonId", "Name", employee.SalonId);
@@ -104,6 +132,7 @@ namespace Hairdresser_Website.Controllers
         {
             var employee = _context.Employees
                 .Include(e => e.Salon)
+                .Include(e => e.EmployeeAvailabilities)
                 .FirstOrDefault(e => e.EmployeeId == id);
 
             if (employee == null) return NotFound();
@@ -114,12 +143,21 @@ namespace Hairdresser_Website.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var employee = _context.Employees.Find(id);
+            var employee = _context.Employees
+                .Include(e => e.EmployeeAvailabilities)
+                .FirstOrDefault(e => e.EmployeeId == id);
+
             if (employee != null)
             {
+                // Remove associated availabilities first
+                _context.EmployeeAvailability.RemoveRange(employee.EmployeeAvailabilities);
+
+                // Then remove the employee
                 _context.Employees.Remove(employee);
+
                 _context.SaveChanges();
             }
+
             return RedirectToAction("Index");
         }
     }

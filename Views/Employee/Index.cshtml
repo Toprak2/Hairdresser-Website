@@ -25,7 +25,23 @@
             <tr>
                 <td>@employee.Name</td>
                 <td>@employee.Expertise</td>
-                <td>@employee.Availability</td>
+                <td>
+                    @if (employee.EmployeeAvailabilities != null && employee.EmployeeAvailabilities.Any())
+                    {
+                        <ul class="list-group">
+                            @foreach (var availability in employee.EmployeeAvailabilities.OrderBy(a => a.DayOfWeek))
+                            {
+                                <li class="list-group-item">
+                                    @availability.DayOfWeek: @availability.StartTime.ToString(@"hh\:mm") - @availability.EndTime.ToString(@"hh\:mm")
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Not specified</span>
+                    }
+                </td>
                 <td>@employee.Salon.Name</td>
                 <td>
                     <a href="/Employee/Edit/@employee.EmployeeId" class="btn btn-warning">Edit</a>
