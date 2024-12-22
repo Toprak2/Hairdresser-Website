@@ -2,6 +2,7 @@
 using Hairdresser_Website.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore; // Make sure to include this for Include()
 
 namespace Hairdresser_Website.Controllers
 {
@@ -17,7 +18,10 @@ namespace Hairdresser_Website.Controllers
 
         public IActionResult Index()
         {
-            var salons = _context.Salons.ToList();
+            // Eagerly load the WorkingHours
+            var salons = _context.Salons
+                .Include(s => s.WorkingHours)
+                .ToList();
             return View(salons);
         }
 
@@ -28,12 +32,18 @@ namespace Hairdresser_Website.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(string Name, string Location, string WorkingHours)
+        public IActionResult Create(Salon salon)
         {
-            Salon salon=new Salon();
-            salon.Name = Name;
-            salon.Location = Location;
-            salon.WorkingHours = WorkingHours;
+
+            // Remove validation errors for Salon navigation property in working hours
+            if (salon.WorkingHours != null)
+            {
+                for (int i = 0; i < salon.WorkingHours.Count; i++)
+                {
+                    ModelState.Remove($"WorkingHours[{i}].Salon");
+                }
+            }
+
             // Debug logging
             Console.WriteLine($"Received salon: Name={salon.Name}, Location={salon.Location}");
             Console.WriteLine($"ModelState.IsValid: {ModelState.IsValid}");
@@ -44,7 +54,8 @@ namespace Hairdresser_Website.Controllers
                 {
                     _context.Salons.Add(salon);
                     _context.SaveChanges();
-                    // After saving, the salon object should have an ID
+
+
                     Console.WriteLine($"Saved salon with ID: {salon.SalonId}");
                     return RedirectToAction("Index");
                 }
@@ -61,13 +72,17 @@ namespace Hairdresser_Website.Controllers
                     Console.WriteLine($"ModelState error: {modelError.ErrorMessage}");
                 }
             }
+
             return View(salon);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var salon = _context.Salons.Find(id);
+            var salon = _context.Salons
+                .Include(s => s.WorkingHours)
+                .FirstOrDefault(s => s.SalonId == id);
+
             if (salon == null) return NotFound();
 
             return View(salon);
@@ -76,32 +91,77 @@ namespace Hairdresser_Website.Controllers
         [HttpPost]
         public IActionResult Edit(Salon salon)
         {
-            if (ModelState.IsValid)
+            // Remove validation errors for Salon navigation property in working hours
+            if (salon.WorkingHours != null)
             {
-                var existingSalon = _context.Salons.Find(salon.SalonId);
-                if (existingSalon == null)
+                for (int i = 0; i < salon.WorkingHours.Count; i++)
                 {
-                    return NotFound();
+                    ModelState.Remove($"WorkingHours[{i}].Salon");
                 }
-
-                // Update fields
-                existingSalon.Name = salon.Name;
-                existingSalon.Location = salon.Location;
-                existingSalon.WorkingHours = salon.WorkingHours;
-
-                _context.Salons.Update(existingSalon);
-                _context.SaveChanges();
-
-                return RedirectToAction("Index");
             }
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Get the existing salon from the database
+                    var existingSalon = _context.Salons
+                        .Include(s => s.WorkingHours)
+                        .FirstOrDefault(s => s.SalonId == salon.SalonId);
+
+                    if (existingSalon == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Update scalar properties
+                    existingSalon.Name = salon.Name;
+                    existingSalon.Location = salon.Location;
+
+                    // Update working hours
+                    foreach (var existingHours in existingSalon.WorkingHours.ToList())
+                    {
+                        _context.Remove(existingHours);
+                    }
+
+                    foreach (var workingHour in salon.WorkingHours)
+                    {
+                        existingSalon.WorkingHours.Add(new SalonWorkingHours
+                        {
+                            DayOfWeek = workingHour.DayOfWeek,
+                            StartTime = workingHour.StartTime,
+                            EndTime = workingHour.EndTime
+                        });
+                    }
+
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error updating salon: {ex.Message}");
+                    ModelState.AddModelError("", "Unable to save changes. " + ex.Message);
+                }
+            }
+            else
+            {
+                foreach (var modelError in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine($"ModelState error: {modelError.ErrorMessage}");
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
             return View(salon);
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var salon = _context.Salons.Find(id);
+            var salon = _context.Salons
+                .Include(s => s.WorkingHours)
+                .FirstOrDefault(s => s.SalonId == id);
+
             if (salon == null) return NotFound();
 
             return View(salon);
@@ -110,12 +170,21 @@ namespace Hairdresser_Website.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var salon = _context.Salons.Find(id);
+            var salon = _context.Salons
+                .Include(s => s.WorkingHours)
+                .FirstOrDefault(s => s.SalonId == id);
+
             if (salon != null)
             {
+                // Remove associated working hours first
+                _context.SalonWorkingHours.RemoveRange(salon.WorkingHours);
+
+                // Then remove the salon
                 _context.Salons.Remove(salon);
+
                 _context.SaveChanges();
             }
+
             return RedirectToAction("Index");
         }
     }

@@ -1,8 +1,5 @@
 ﻿using Hairdresser_Website.Models;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 using Microsoft.EntityFrameworkCore;
-using Hairdresser_Website.Models;
 
 namespace Hairdresser_Website.Data
 {
@@ -18,6 +15,8 @@ namespace Hairdresser_Website.Data
         public DbSet<Service> Services { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<EmployeeAvailability> EmployeeAvailability { get; set; } // Add this
+        public DbSet<SalonWorkingHours> SalonWorkingHours { get; set; } // Add this
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,24 +1,52 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model Hairdresser_Website.Models.Salon
 
 <h2>Edit Salon</h2>
 
-<form method="post">
+<form method="post" asp-controller="Salon" asp-action="Edit">
     <input type="hidden" asp-for="SalonId" />
     <div class="form-group">
-        <label>Name</label>
+        <label asp-for="Name">Name</label>
         <input type="text" asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label>Location</label>
+        <label asp-for="Location">Location</label>
         <input type="text" asp-for="Location" class="form-control" required />
+        <span asp-validation-for="Location" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <label>Working Hours</label>
-        <input type="text" asp-for="WorkingHours" class="form-control" placeholder="e.g., 09:00-18:00" required />
-    </div>
+
+    <h4>Working Hours</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Day of Week</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+        </thead>
+        <tbody id="workingHoursTable">
+            @for (int i = 0; i < 7; i++)
+            {
+                var dayOfWeek = (Hairdresser_Website.Models.DayOfWeek)i;
+                var workingHours = Model.WorkingHours.FirstOrDefault(wh => wh.DayOfWeek == dayOfWeek);
+                <tr>
+                    <td>
+                        <input type="hidden" name="WorkingHours[@i].DayOfWeek" value="@dayOfWeek" />
+                        @dayOfWeek
+                    </td>
+                    <td>
+                        <input type="time" name="WorkingHours[@i].StartTime" value="@(workingHours?.StartTime.ToString(@"hh\:mm"))" class="form-control" />
+                    </td>
+                    <td>
+                        <input type="time" name="WorkingHours[@i].EndTime" value="@(workingHours?.EndTime.ToString(@"hh\:mm"))" class="form-control" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
     <button type="submit" class="btn btn-primary mt-3">Save</button>
 </form>

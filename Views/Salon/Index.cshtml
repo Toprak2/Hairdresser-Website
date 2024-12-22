@@ -21,7 +21,23 @@
             <tr>
                 <td>@salon.Name</td>
                 <td>@salon.Location</td>
-                <td>@salon.WorkingHours</td>
+                <td>
+                    @if (salon.WorkingHours != null && salon.WorkingHours.Any())
+                    {
+                        <ul class="list-group">
+                            @foreach (var workingHours in salon.WorkingHours.OrderBy(wh => wh.DayOfWeek))
+                            {
+                                <li class="list-group-item">
+                                    @workingHours.DayOfWeek: @workingHours.StartTime.ToString(@"hh\:mm") - @workingHours.EndTime.ToString(@"hh\:mm")
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Not specified</span>
+                    }
+                </td>
                 <td>
                     <a href="/Salon/Edit/@salon.SalonId" class="btn btn-warning">Edit</a>
                     <a href="/Salon/Delete/@salon.SalonId" class="btn btn-danger">Delete</a>
