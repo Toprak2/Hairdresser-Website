@@ -1,10 +1,21 @@
 ﻿namespace Hairdresser_Website.Models
 {
+    public enum AppointmentStatus
+    {
+        Confirmed,
+        Cancelled,
+        Done
+    }
     public class Appointment
     {
+        private DateTime appointmentDate;
         public int AppointmentId { get; set; }
-        public DateTime AppointmentDate { get; set; }
-        public string Status { get; set; } // e.g., "Pending", "Confirmed", "Cancelled"
+        public DateTime AppointmentDate
+        {
+            get => appointmentDate;
+            set => appointmentDate = DateTime.SpecifyKind(value, DateTimeKind.Utc);
+        }
+        public AppointmentStatus Status { get; set; } // Use the enum
 
         // Foreign Keys
         public int ServiceId { get; set; }

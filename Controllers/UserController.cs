@@ -5,9 +5,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using Hairdresser_Website.Data;
-using Hairdresser_Website.Models;
-
 namespace Hairdresser_Website.Controllers
 {
     public class UserController : Controller
