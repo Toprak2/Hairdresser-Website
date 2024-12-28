@@ -17,60 +17,48 @@
             margin-bottom: 35px;
         }
 
-        /* Add Employee butonu için stil */
+        .btn,
         .add-employee-btn {
-            display: block;
-            margin: 30px auto; /* Ortalama için */
-            padding: 20px 40px; /* Butonu büyütmek için */
-            font-size: 20px; /* Yazı boyutunu artır */
-            color: white;
-            background-color: purple;
-            border: none;
-            border-radius: 8px; /* Daha yuvarlak köşeler */
-            text-align: center;
-            text-decoration: none; /* Alt çizgi kaldırıldı */
-            transition: background-color 0.3s;
-        }
-
-            .add-employee-btn:hover {
-                background-color: indigo; /* Hover için koyu mor */
-            }
-
-            .add-employee-btn:active {
-                background-color: indigo; /* Tıklandığında koyu mor */
-                color: white; /* Yazı rengi beyaz */
-            }
-
-        /* Edit ve Delete butonları için stil */
-        .btn {
             padding: 10px 20px;
             font-size: 16px;
             color: white;
-            background-color: purple; /* Mor renk */
+            background-color: purple;
             border: none;
             border-radius: 5px;
             text-align: center;
             text-decoration: none;
-            transition: background-color 0.3s, transform 0.1s;
+            display: inline-block; /* Butonlar inline-block olsun */
+            transition: all 0.3s ease; /* Tüm geçişler için */
+            transform: scale(1); /* Başlangıç ölçeği */
         }
 
-            .btn:hover {
-                background-color: indigo; /* Hover rengi */
-                transform: scale(1); /* Küçülmesin */
+        /* Add Employee butonu için stil */
+        .add-employee-btn {
+            margin: 30px auto; /* Otomatik margin ile ortalama */
+            padding: 20px 40px;
+            font-size: 20px;
+            width: auto; /* Genişliği otomatik */
+            display: inline-block; /* Inline-block yaparak ortalamayı sağla */
+        }
+
+            /* Hover ve active durumunda renk değişimi ve büyüme */
+            .add-employee-btn:hover,
+            .add-employee-btn:active,
+            .btn:hover,
+            .btn:active {
+                background-color: indigo;
+                transform: scale(1); /* Boyut değişikliği olmasın */
             }
 
-        .btn-warning {
-            background-color: purple; /* Edit butonu için mor */
-        }
-
-        .btn-danger {
-            background-color: purple; /* Delete butonu için mor */
+        /* Btn-warning ve btn-danger butonları için */
+        .btn-warning, .btn-danger {
+            background-color: purple; /* Aynı arka plan rengi */
         }
 
         /* Tablo stili */
         .table {
-            width: 80%; /* Tablo genişliğini %80 olarak ayarladık */
-            margin: auto; /* Ortalamak için */
+            width: 80%; /* Tablo genişliği %80 */
+            margin: 20px auto; /* Ortalamak için */
             border-collapse: collapse; /* Kenarlıkları birleştir */
         }
 
@@ -85,6 +73,13 @@
                 background-color: #f2f2f2; /* Başlık arka plan rengi */
                 font-weight: bold;
             }
+
+        /* Centering the button using flexbox */
+        .centered-div {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
     </style>
 </head>
 <body>
@@ -125,14 +120,17 @@
                     </td>
                     <td>@employee.Salon.Name</td>
                     <td>
-                        <a href="/Employee/Edit/@employee.EmployeeId" class="btn btn-warning">Edit</a>
-                        <a href="/Employee/Delete/@employee.EmployeeId" class="btn btn-danger">Delete</a>
+                        <a href="/Employee/Edit/@employee.EmployeeId" class="btn btn-warning">Düzenle</a>
+                        <a href="/Employee/Delete/@employee.EmployeeId" class="btn btn-danger">Sil</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 
-    <a href="/Employee/Create" class="add-employee-btn">İşçi ekle</a>
+    <!-- Ekleme butonu, tablo altına alındı -->
+    <div class="centered-div">
+        <a href="/Employee/Create" class="add-employee-btn">İşçi ekle</a>
+    </div>
 </body>
 </html>

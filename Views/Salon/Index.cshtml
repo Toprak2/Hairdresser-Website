@@ -17,28 +17,8 @@
             margin-bottom: 35px;
         }
 
-        /* Add Salon butonu için stil */
+        .btn,
         .add-salon-btn {
-            display: block;
-            margin: 30px auto;
-            padding: 20px 40px;
-            font-size: 20px;
-            color: white;
-            background-color: purple;
-            border: none;
-            border-radius: 8px;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.1s;
-        }
-
-            .add-salon-btn:hover {
-                background-color: indigo;
-                transform: scale(1);
-            }
-
-        /* Edit ve Delete butonları için stil */
-        .btn {
             padding: 10px 20px;
             font-size: 16px;
             color: white;
@@ -47,19 +27,32 @@
             border-radius: 5px;
             text-align: center;
             text-decoration: none;
-            transition: background-color 0.3s;
+            display: inline-block; /* Butonlar inline-block olsun */
+            transition: all 0.3s ease; /* Tüm geçişler için */
+            transform: scale(1); /* Başlangıç ölçeği */
         }
 
-            .btn:hover {
+        /* Add Salon butonu için stil */
+        .add-salon-btn {
+            margin: 30px auto; /* Otomatik margin ile ortalama */
+            padding: 20px 40px;
+            font-size: 20px;
+            width: auto; /* Genişliği otomatik */
+            display: inline-block; /* Inline-block yaparak ortalamayı sağla */
+        }
+
+            /* Hover ve active durumunda renk değişimi ve büyüme */
+            .add-salon-btn:hover,
+            .add-salon-btn:active,
+            .btn:hover,
+            .btn:active {
                 background-color: indigo;
+                transform: scale(1); /* Boyut değişikliği olmasın */
             }
 
-        .btn-warning {
-            background-color: purple;
-        }
-
-        .btn-danger {
-            background-color: purple;
+        /* Btn-warning ve btn-danger butonları için */
+        .btn-warning, .btn-danger {
+            background-color: purple; /* Aynı arka plan rengi */
         }
 
         /* Günler tablosu için stil */
@@ -80,6 +73,13 @@
                 background-color: #f2f2f2; /* Başlık arka plan rengi */
                 font-weight: bold;
             }
+
+        /* Centering the button using flexbox */
+        .centered-div {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
     </style>
 </head>
 <body>
@@ -118,14 +118,17 @@
                         }
                     </td>
                     <td>
-                        <a href="/Salon/Edit/@salon.SalonId" class="btn btn-warning">Edit</a>
-                        <a href="/Salon/Delete/@salon.SalonId" class="btn btn-danger">Delete</a>
+                        <a href="/Salon/Edit/@salon.SalonId" class="btn btn-warning">Düzenle</a>
+                        <a href="/Salon/Delete/@salon.SalonId" class="btn btn-danger">Sil</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 
-    <a href="/Salon/Create" class="add-salon-btn">Salon Ekle</a>
+    <!-- Ekleme butonu, tablo altına alındı -->
+    <div class="centered-div">
+        <a href="/Salon/Create" class="add-salon-btn">Salon Ekle</a>
+    </div>
 </body>
 </html>
