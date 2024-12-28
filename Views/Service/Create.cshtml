@@ -7,30 +7,109 @@
 
 <form asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <!-- Service Name -->
     <div class="form-group">
         <label asp-for="Name" class="control-label"></label>
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
+
+    <!-- Duration -->
     <div class="form-group">
         <label asp-for="Duration" class="control-label"></label>
         <input asp-for="Duration" class="form-control" />
         <span asp-validation-for="Duration" class="text-danger"></span>
     </div>
+
+    <!-- Price -->
     <div class="form-group">
         <label asp-for="Price" class="control-label"></label>
         <input asp-for="Price" class="form-control" />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
+
+    <!-- Salon Selection -->
     <div class="form-group">
         <label asp-for="SalonId" class="control-label"></label>
         <select asp-for="SalonId" class="form-control" asp-items="ViewBag.SalonId"></select>
     </div>
+
+    <!-- Submit Button -->
     <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
+        <input type="submit" value="Create" class="btn btn-primary create-btn" />
     </div>
 </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<!-- Back to List Link -->
+<div class="back-link">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
+
+<style>
+    h2 {
+        font-size: 44px;
+        font-weight: bold;
+        color: darkviolet;
+        text-align: center;
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-size: 18px;
+            color: purple;
+        }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .form-group span.text-danger {
+        color: red;
+        font-size: 14px;
+    }
+
+    .create-btn {
+        padding: 10px 20px;
+        font-size: 18px;
+        color: white;
+        background-color: purple;
+        border: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        display: block;
+        margin: 20px auto;
+    }
+
+        .create-btn:hover,
+        .create-btn:active {
+            background-color: indigo;
+        }
+
+    .back-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .back-link .btn {
+            font-size: 16px;
+            color: white;
+            background-color: grey;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+
+            .back-link .btn:hover {
+                background-color: darkgrey;
+            }
+</style>

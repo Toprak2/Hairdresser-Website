@@ -35,41 +35,29 @@
                         @((Hairdresser_Website.Models.DayOfWeek)i)
                     </td>
                     <td>
-                        @if (i == 0)
-                        {
-                            <input type="time" id="mondayStartTime" name="workingHours[@i].StartTime" class="form-control" />
-                        }
-                        else
-                        {
-                            <input type="time" name="workingHours[@i].StartTime" class="form-control" />
-                        }
+                        <input type="time" name="workingHours[@i].StartTime" class="form-control" />
                     </td>
                     <td>
-                        @if (i == 0)
-                        {
-                            <input type="time" id="mondayEndTime" name="workingHours[@i].EndTime" class="form-control" />
-                        }
-                        else
-                        {
-                            <input type="time" name="workingHours[@i].EndTime" class="form-control" />
-                        }
+                        <input type="time" name="workingHours[@i].EndTime" class="form-control" />
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 
-    <button type="submit" class="btn btn-primary mt-3">Save</button>
+    <button type="submit" class="btn btn-primary btn-lg mt-3">Save</button>
 </form>
+
+<div class="form-group mt-3">
+    <a href="@Url.Action("Index", "Salon")" class="btn btn-secondary btn-lg">Back to List</a>
+</div>
 
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Get Monday's input elements
-            const mondayStartTime = document.getElementById('mondayStartTime');
-            const mondayEndTime = document.getElementById('mondayEndTime');
+            const mondayStartTime = document.querySelector('input[name="workingHours[0].StartTime"]');
+            const mondayEndTime = document.querySelector('input[name="workingHours[0].EndTime"]');
 
-            // Function to fill other days
             function fillOtherDays() {
                 const startTimeValue = mondayStartTime.value;
                 const endTimeValue = mondayEndTime.value;
@@ -89,8 +77,82 @@
             }
 
             // Add event listeners to Monday's inputs
-            mondayStartTime.addEventListener('change', fillOtherDays);
-            mondayEndTime.addEventListener('change', fillOtherDays);
+            if (mondayStartTime && mondayEndTime) {
+                mondayStartTime.addEventListener('change', fillOtherDays);
+                mondayEndTime.addEventListener('change', fillOtherDays);
+            }
         });
     </script>
 }
+
+<style>
+    h2 {
+        font-size: 36px;
+        font-weight: bold;
+        color: darkviolet;
+        text-align: center;
+        margin-top: 35px;
+    }
+
+    h4 {
+        margin-top: 25px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .table {
+        margin: 0 auto 40px;
+        width: 80%;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+    .btn {
+        font-size: 18px;
+        padding: 12px 30px;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        background-color: purple;
+        border: none;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover,
+        .btn-primary:active {
+            background-color: indigo;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-secondary:hover,
+        .btn-secondary:active {
+            background-color: #5a6268;
+        }
+
+    .btn-lg {
+        font-size: 20px;
+        padding: 15px 40px;
+    }
+</style>

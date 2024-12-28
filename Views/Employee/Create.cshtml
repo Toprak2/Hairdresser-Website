@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
@@ -7,70 +6,93 @@
 
 <h2>Add Employee</h2>
 
+<p>Fill in the details of the new employee below:</p>
+
+<table class="table">
+    <!-- Name -->
+    <tr>
+        <th>Name</th>
+        <td>
+            <div class="form-group">
+                <input type="text" asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </td>
+    </tr>
+
+    <!-- Expertise -->
+    <tr>
+        <th>Expertise</th>
+        <td>
+            <div class="form-group">
+                <input type="text" asp-for="Expertise" class="form-control" required />
+                <span asp-validation-for="Expertise" class="text-danger"></span>
+            </div>
+        </td>
+    </tr>
+
+    <!-- Salon -->
+    <tr>
+        <th>Salon</th>
+        <td>
+            <div class="form-group">
+                <select asp-for="SalonId" class="form-control" asp-items="ViewBag.Salons">
+                    <option value="">-- Select a Salon --</option>
+                </select>
+                <span asp-validation-for="SalonId" class="text-danger"></span>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<h4>Availability</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Day of Week</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+        </tr>
+    </thead>
+    <tbody id="availabilityTable">
+        @for (int i = 0; i < 7; i++)
+        {
+            <tr>
+                <td>
+                    <input type="hidden" name="EmployeeAvailabilities[@i].DayOfWeek" value="@((Hairdresser_Website.Models.DayOfWeek)i)" />
+                    @((Hairdresser_Website.Models.DayOfWeek)i)
+                </td>
+                <td>
+                    @if (i == 0)
+                    {
+                        <input type="time" id="mondayStartTime" name="EmployeeAvailabilities[@i].StartTime" class="form-control" />
+                    }
+                    else
+                    {
+                        <input type="time" name="EmployeeAvailabilities[@i].StartTime" class="form-control" />
+                    }
+                </td>
+                <td>
+                    @if (i == 0)
+                    {
+                        <input type="time" id="mondayEndTime" name="EmployeeAvailabilities[@i].EndTime" class="form-control" />
+                    }
+                    else
+                    {
+                        <input type="time" name="EmployeeAvailabilities[@i].EndTime" class="form-control" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 <form method="post" asp-controller="Employee" asp-action="Create">
     <div class="form-group">
-        <label asp-for="Name">Name</label>
-        <input type="text" asp-for="Name" class="form-control" required />
-        <span asp-validation-for="Name" class="text-danger"></span>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="/Employee/Index" class="btn btn-secondary">Cancel</a>
     </div>
-    <div class="form-group">
-        <label asp-for="Expertise">Expertise</label>
-        <input type="text" asp-for="Expertise" class="form-control" required />
-        <span asp-validation-for="Expertise" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="SalonId">Salon</label>
-        <select asp-for="SalonId" class="form-control" asp-items="ViewBag.Salons">
-            <option value="">-- Select a Salon --</option>
-        </select>
-        <span asp-validation-for="SalonId" class="text-danger"></span>
-    </div>
-
-    <h4>Availability</h4>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Day of Week</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-            </tr>
-        </thead>
-        <tbody id="availabilityTable">
-            @for (int i = 0; i < 7; i++)
-            {
-                <tr>
-                    <td>
-                        <input type="hidden" name="EmployeeAvailabilities[@i].DayOfWeek" value="@((Hairdresser_Website.Models.DayOfWeek)i)" />
-                        @((Hairdresser_Website.Models.DayOfWeek)i)
-                    </td>
-                    <td>
-                        @if (i == 0)
-                        {
-                            <input type="time" id="mondayStartTime" name="EmployeeAvailabilities[@i].StartTime" class="form-control" />
-                        }
-                        else
-                        {
-                            <input type="time" name="EmployeeAvailabilities[@i].StartTime" class="form-control" />
-                        }
-                    </td>
-                    <td>
-                        @if (i == 0)
-                        {
-                            <input type="time" id="mondayEndTime" name="EmployeeAvailabilities[@i].EndTime" class="form-control" />
-                        }
-                        else
-                        {
-                            <input type="time" name="EmployeeAvailabilities[@i].EndTime" class="form-control" />
-                        }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-    <button type="submit" class="btn btn-primary mt-3">Save</button>
 </form>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -106,3 +128,65 @@
         }
     });
 </script>
+
+<style>
+    h2 {
+        font-size: 44px;
+        font-weight: bold;
+        color: darkviolet;
+        text-align: center;
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+
+    .table {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .form-group span.text-danger {
+        color: red;
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        background-color: purple;
+        color: white;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+        .btn-primary:hover,
+        .btn-primary:active {
+            background-color: indigo;
+        }
+
+    .btn-secondary {
+        background-color: grey;
+        color: white;
+        border: none;
+        margin-left: 10px;
+    }
+
+        .btn-secondary:hover {
+            background-color: darkgrey;
+        }
+</style>

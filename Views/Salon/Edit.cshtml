@@ -7,13 +7,17 @@
 
 <form method="post" asp-controller="Salon" asp-action="Edit">
     <input type="hidden" asp-for="SalonId" />
+
+    <!-- Salon Name -->
     <div class="form-group">
-        <label asp-for="Name">Name</label>
+        <label asp-for="Name" class="control-label">Name</label>
         <input type="text" asp-for="Name" class="form-control" required />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
+
+    <!-- Salon Location -->
     <div class="form-group">
-        <label asp-for="Location">Location</label>
+        <label asp-for="Location" class="control-label">Location</label>
         <input type="text" asp-for="Location" class="form-control" required />
         <span asp-validation-for="Location" class="text-danger"></span>
     </div>
@@ -48,5 +52,79 @@
         </tbody>
     </table>
 
-    <button type="submit" class="btn btn-primary mt-3">Save</button>
+    <!-- Submit Button -->
+    <div class="form-group text-center mt-4">
+        <button type="submit" class="btn btn-primary save-btn">Save</button>
+    </div>
 </form>
+
+<style>
+    h2 {
+        font-size: 44px;
+        font-weight: bold;
+        color: darkviolet;
+        text-align: center;
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-size: 18px;
+            color: purple;
+        }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .form-group span.text-danger {
+        color: red;
+        font-size: 14px;
+    }
+
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .table td input {
+            width: 100px;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+    .save-btn {
+        padding: 10px 20px;
+        font-size: 18px;
+        color: white;
+        background-color: purple;
+        border: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+        .save-btn:hover,
+        .save-btn:active {
+            background-color: indigo;
+        }
+</style>

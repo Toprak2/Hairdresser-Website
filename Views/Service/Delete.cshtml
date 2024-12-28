@@ -6,7 +6,8 @@
 <h2>Delete Service</h2>
 
 <h3>Are you sure you want to delete this?</h3>
-<div>
+
+<div class="service-details">
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -34,10 +35,78 @@
             @Html.DisplayFor(model => model.Salon.Name)
         </dd>
     </dl>
+</div>
 
+<!-- Delete and Back to List buttons -->
+<div class="action-buttons">
     <form asp-action="Delete">
         <input type="hidden" asp-for="ServiceId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" />
     </form>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
+
+<style>
+    h2 {
+        font-size: 44px;
+        font-weight: bold;
+        color: darkviolet;
+        text-align: center;
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: normal;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .service-details {
+        font-size: 18px;
+        color: #333;
+        margin: 0 auto;
+        max-width: 80%;
+    }
+
+        .service-details dt {
+            font-weight: bold;
+            color: purple;
+        }
+
+        .service-details dd {
+            margin-bottom: 15px;
+        }
+
+    .action-buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+        .action-buttons .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: purple;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+            .action-buttons .btn:hover,
+            .action-buttons .btn:active {
+                background-color: indigo;
+                transform: scale(1);
+            }
+
+        .action-buttons .btn-secondary {
+            background-color: grey;
+        }
+</style>

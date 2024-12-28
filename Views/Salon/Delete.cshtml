@@ -7,6 +7,7 @@
 
 <p>Are you sure you want to delete the following salon?</p>
 
+<!-- Salon Information Table -->
 <table class="table">
     <tr>
         <th>Name</th>
@@ -38,7 +39,94 @@
     </tr>
 </table>
 
+<!-- Delete Form -->
 <form method="post" asp-action="Delete" asp-route-id="@Model.SalonId">
-    <button type="submit" class="btn btn-danger">Delete</button>
-    <a href="/Salon/Index" class="btn btn-secondary">Cancel</a>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-danger btn-lg">Delete</button>
+    </div>
 </form>
+
+<!-- Cancel Button -->
+<div class="form-group text-center">
+    <a href="/Salon/Index" class="btn btn-secondary btn-lg">Cancel</a>
+</div>
+
+<style>
+    h2 {
+        font-size: 44px;
+        font-weight: bold;
+        color: darkviolet;
+        text-align: center;
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+
+    p {
+        font-size: 18px;
+        text-align: center;
+        color: #333;
+        margin-bottom: 25px;
+    }
+
+    .table {
+        width: 70%;
+        margin: 0 auto 40px;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+    .list-group {
+        padding-left: 0;
+    }
+
+    .list-group-item {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    .btn {
+        font-size: 18px;
+        padding: 12px 30px;
+        border-radius: 5px;
+    }
+
+    .btn-danger {
+        background-color: purple;
+        border: none;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-danger:hover,
+        .btn-danger:active {
+            background-color: indigo;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-secondary:hover,
+        .btn-secondary:active {
+            background-color: #5a6268;
+        }
+
+    .btn-lg {
+        font-size: 20px;
+        padding: 15px 40px;
+    }
+</style>
