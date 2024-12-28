@@ -19,4 +19,61 @@
     <PackageReference Include="RestSharp" Version="112.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\assets\css\animate.css" />
+    <None Include="wwwroot\assets\css\bootsnav.css" />
+    <None Include="wwwroot\assets\css\bootstrap.min.css" />
+    <None Include="wwwroot\assets\css\flaticon.css" />
+    <None Include="wwwroot\assets\css\font-awesome.min.css" />
+    <None Include="wwwroot\assets\css\owl.carousel.min.css" />
+    <None Include="wwwroot\assets\css\owl.theme.default.min.css" />
+    <None Include="wwwroot\assets\css\responsive.css" />
+    <None Include="wwwroot\assets\css\style.css" />
+    <None Include="wwwroot\assets\download\browney.txt" />
+    <None Include="wwwroot\assets\fonts\Flaticon.eot" />
+    <None Include="wwwroot\assets\fonts\Flaticon.svg" />
+    <None Include="wwwroot\assets\fonts\Flaticon.ttf" />
+    <None Include="wwwroot\assets\fonts\Flaticon.woff" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\assets\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.eot" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.svg" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.ttf" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.woff" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.woff2" />
+    <None Include="wwwroot\assets\images\about\old.jpg" />
+    <None Include="wwwroot\assets\images\about\profile_image.jpg" />
+    <None Include="wwwroot\assets\images\clients\c1.png" />
+    <None Include="wwwroot\assets\images\clients\c2.png" />
+    <None Include="wwwroot\assets\images\clients\c3.png" />
+    <None Include="wwwroot\assets\images\clients\c4.png" />
+    <None Include="wwwroot\assets\images\clients\c5.png" />
+    <None Include="wwwroot\assets\images\clients\c6.png" />
+    <None Include="wwwroot\assets\images\clients\c7.png" />
+    <None Include="wwwroot\assets\images\portfolio\p1.jpg" />
+    <None Include="wwwroot\assets\images\portfolio\p2.jpg" />
+    <None Include="wwwroot\assets\images\portfolio\p3.jpg" />
+    <None Include="wwwroot\assets\images\portfolio\p4.jpg" />
+    <None Include="wwwroot\assets\images\portfolio\p5.jpg" />
+    <None Include="wwwroot\assets\js\bootsnav.js" />
+    <None Include="wwwroot\assets\js\bootstrap.min.js" />
+    <None Include="wwwroot\assets\js\custom.js" />
+    <None Include="wwwroot\assets\js\jquery.appear.js" />
+    <None Include="wwwroot\assets\js\jquery.js" />
+    <None Include="wwwroot\assets\js\jquery.sticky.js" />
+    <None Include="wwwroot\assets\js\owl.carousel.min.js" />
+    <None Include="wwwroot\assets\js\progressbar.js" />
+    <None Include="wwwroot\assets\logo\favicon.png" />
+    <None Include="wwwroot\assets\logo\logo.png" />
+  </ItemGroup>
+
 </Project>

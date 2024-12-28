@@ -3,21 +3,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AIHair</h2>
-
-<form id="hairstyleForm" enctype="multipart/form-data" method="post" action="/Home/AIHair">
-    <input type="file" name="image" />
-    <select name="hairType">
+<form id="hairstyleForm" enctype="multipart/form-data" method="post" action="/Home/AIHair" style="display: flex; flex-direction: column; align-items: center; gap: 20px; background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; max-width: 400px; margin: 20px auto;">
+    <input type="file" name="image" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+    <select name="hairType" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
         <option value="101">Bangs</option>
         <option value="201">Long Hair</option>
         <option value="301">Bangs with Long Hair</option>
         <option value="401">Medium Hair Increase</option>
         <!-- Diğer seçenekler -->
     </select>
-    <button type="submit">Change Hairstyle</button>
+    <button type="submit" style="width: 100%; padding: 12px; background-color: #007bff; color: white; border: none; cursor: pointer; border-radius: 4px; font-size: 16px; transition: background-color 0.3s;">Change Hairstyle</button>
 </form>
 
-<div id="result"></div>
+<div id="result" style="margin-top: 20px; text-align: center;">
+    <!-- Burada sonuç resminin gösterileceği alan olacak -->
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -26,14 +26,14 @@
         var formData = new FormData(this);
 
         $.ajax({
-            url: '/Home/AIHair',  // İlgili controller'ı buraya yazıyoruz
+            url: '/Home/AIHair',
             type: 'POST',
             data: formData,
             processData: false,
             contentType: false,
             success: function (response) {
                 if (response.success) {
-                    $("#result").html('<img src="data:image/png;base64,' + response.image + '" alt="Result Image" />');
+                    $("#result").html('<img src="data:image/png;base64,' + response.image + '" alt="Result Image" style="max-width: 100%; max-height: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />');
                 } else {
                     alert(response.message);
                 }
