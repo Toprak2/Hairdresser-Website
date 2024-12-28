@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Hairdresser_Website.Data;
 using Hairdresser_Website.Models;
+using System.Security.Claims;
 
 namespace Hairdresser_Website.Controllers
 {
@@ -18,8 +19,8 @@ namespace Hairdresser_Website.Controllers
         }
 
         // GET: api/<CustomersApiController>
-        [HttpGet("{id}")]
-        public IActionResult Get()
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
             return RedirectToAction();
         }

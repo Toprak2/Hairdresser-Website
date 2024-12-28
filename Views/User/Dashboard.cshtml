@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
+@using System.Security.Claims <!-- Bu satırı ekledik -->
 @model Hairdresser_Website.Models.DelApp
 
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 50px;">
@@ -16,14 +17,6 @@
         <a href="@Url.Action("Create", "Appointment")" class="btn" style="background-color: #6a0dad; color: white; padding: 15px 30px; font-size: 18px; border: none; cursor: pointer; border-radius: 8px; width: 250px; text-align: center; transition: background-color 0.3s;">
             Sipariş Ver
         </a>
-
-        <!-- Eski Siparişlerimi Listele -->
-        <form method="get" action="/api/Api" style="margin: 0;">
-            <button type="submit" class="btn" style="background-color: #6a0dad; color: white; padding: 15px 30px; font-size: 18px; border: none; cursor: pointer; border-radius: 8px; width: 250px; text-align: center; transition: background-color 0.3s;">
-                Eski Siparişlerimi Listele
-            </button>
-        </form>
-    </div>
 
     <!-- Sipariş silme formu -->
     <div style="margin-top: 30px; width: 100%; max-width: 400px;">
@@ -40,6 +33,9 @@
 </div>
 
 <script>
+    const userId = '@User.FindFirstValue(ClaimTypes.NameIdentifier)';
+    console.log("Aktif Kullanıcı ID: ", userId); // Konsola yazdırma
+
     // Hover efektleri
     document.querySelectorAll('.btn').forEach(button => {
         button.addEventListener('mouseenter', () => {
@@ -51,7 +47,7 @@
     });
 
     // Sipariş silme işlemi
-        document.getElementById('deleteOrderBtn').addEventListener('click', function () {
+    document.getElementById('deleteOrderBtn').addEventListener('click', function () {
         const orderId = parseInt(document.getElementById('orderId').value, 10);
 
         if (isNaN(orderId)) {
@@ -75,5 +71,4 @@
             alert('Bir hata oluştu.');
         });
     });
-
 </script>
