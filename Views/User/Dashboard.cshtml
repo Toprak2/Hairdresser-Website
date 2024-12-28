@@ -1,10 +1,79 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Dashboard";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
-<h2>Welcome to Your Dashboard!</h2>
-<p>Here, customers can book appointments and manage their details.</p>
+@model Hairdresser_Website.Models.DelApp
 
-<a href="/User/Logout" class="btn btn-danger">Logout</a>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 50px;">
+    <h2 style="font-size: 36px; font-weight: bold; color: #6a0dad; text-align: center; margin-bottom: 20px;">Kullanıcı arayüzüne hoşgeldiniz</h2>
+    <p style="font-size: 18px; color: #555; text-align: center; margin-bottom: 40px;">
+        Sizinle tekrar bulaşabildiğimiz için çok mutluyuz. Buradan sipariş verebilir ve eski siparişlerinizi görebilir veya bir siparişinizi iptal edebilirsiniz.
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+        <!-- Sipariş Ver -->
+        <a href="@Url.Action("Create", "Appointment")" class="btn" style="background-color: #6a0dad; color: white; padding: 15px 30px; font-size: 18px; border: none; cursor: pointer; border-radius: 8px; width: 250px; text-align: center; transition: background-color 0.3s;">
+            Sipariş Ver
+        </a>
+
+        <!-- Eski Siparişlerimi Listele -->
+        <form method="get" action="/api/Api" style="margin: 0;">
+            <button type="submit" class="btn" style="background-color: #6a0dad; color: white; padding: 15px 30px; font-size: 18px; border: none; cursor: pointer; border-radius: 8px; width: 250px; text-align: center; transition: background-color 0.3s;">
+                Eski Siparişlerimi Listele
+            </button>
+        </form>
+    </div>
+
+    <!-- Sipariş silme formu -->
+    <div style="margin-top: 40px; width: 100%; max-width: 400px;">
+        <form id="deleteOrderForm" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <input type="text" id="orderId" placeholder="Sipariş ID'si" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;" required />
+            <button type="button" id="deleteOrderBtn" class="btn" style="background-color: #6a0dad; color: white; padding: 17px; font-size: 16px; border: none; cursor: pointer; border-radius: 4px; width: 100%; transition: background-color 0.3s;">
+                Bir Siparişi Sil
+            </button>
+        </form>
+    </div>
+
+    <!-- Ek boşluk -->
+    <div style="margin-top: 30px;"></div>
+</div>
+
+<script>
+    // Hover efektleri
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            button.style.backgroundColor = '#5a0c8c';
+        });
+        button.addEventListener('mouseleave', () => {
+            button.style.backgroundColor = '#6a0dad';
+        });
+    });
+
+    // Sipariş silme işlemi
+        document.getElementById('deleteOrderBtn').addEventListener('click', function () {
+        const orderId = parseInt(document.getElementById('orderId').value, 10);
+
+        if (isNaN(orderId)) {
+            alert('Lütfen geçerli bir Sipariş ID girin.');
+            return;
+        }
+
+        // DELETE isteği gönder
+        fetch(`/api/Api/${orderId}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Sipariş başarıyla silindi.');
+            } else {
+                alert('Sipariş silme işlemi başarısız oldu.');
+            }
+        })
+        .catch(error => {
+            console.error('Hata: ', error);
+            alert('Bir hata oluştu.');
+        });
+    });
+
+</script>

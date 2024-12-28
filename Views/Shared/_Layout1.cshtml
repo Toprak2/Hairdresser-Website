@@ -56,17 +56,14 @@
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 							<i class="fa fa-bars"></i>
 						</button>
-						<a class="navbar-brand" href="@Url.Action("Index", "Home")">TkHair</a>
+						<a class="navbar-brand" href="@Url.Action("Index", "Home")" style="font-size: 28px;">TkHair</a>
 					</div><!--/.navbar-header-->
 					<!-- End Header Navigation -->
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 						<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
 							<li class="smooth-menu active"></li>
-							<li class="smooth-menu"><a href="@Url.Action("Index", "Home")">HOME</a></li>
-							<li class="smooth-menu"><a href="@Url.Action("Appointment", "Home")">APPOINTMENT</a></li>
-							<li class="smooth-menu"><a href="@Url.Action("AIHair", "Home")">AI HAIR</a></li>
-							<li class="smooth-menu"><a href="@Url.Action("User", "Admin")">LOGIN</a></li>
+							<li><a href="@Url.Action("Logout", "User")">LOGOUT</a></li>
 						</ul><!--/.nav -->
 					</div><!-- /.navbar-collapse -->
 				</div><!--/.container-->
@@ -82,7 +79,7 @@
 	</div>
 	<section id="contact" class="contact">
 		<div class="section-heading text-center">
-			<h2>ŞİKAYET VE ÖNERİ İÇİN BİZİMLE İLETİŞİME GEÇİN</h2>
+			<h2>ŞİKAYETLERİNİZ VE ÖNERİLERİNİZ İÇİN BİZİMLE İLETİŞİME GEÇİN</h2>
 		</div>
 		<div class="container">
 			<div class="contact-content">

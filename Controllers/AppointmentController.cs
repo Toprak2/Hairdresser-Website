@@ -74,7 +74,7 @@ namespace Hairdresser_Website.Controllers
             {
                 _context.Appointments.Add(newAppointment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Dashboard", "User");
             }
             catch (Exception ex)
             {
