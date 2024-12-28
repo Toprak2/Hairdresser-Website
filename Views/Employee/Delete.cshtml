@@ -1,104 +1,48 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
-@model Hairdresser_Website.Models.Service
+@model Hairdresser_Website.Models.Employee
 
-<h2>Create Service</h2>
+<h2>Delete Employee</h2>
 
-<p>Enter the details for the new service below:</p>
+<p>Are you sure you want to delete the following employee?</p>
 
 <table class="table">
-    <!-- Service Name -->
     <tr>
-        <th>Service Name</th>
+        <th>Name</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Expertise</th>
+        <td>@Model.Expertise</td>
+    </tr>
+    <tr>
+        <th>Availability</th>
         <td>
-            <div class="form-group">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
+            @if (Model.EmployeeAvailabilities != null && Model.EmployeeAvailabilities.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var availability in Model.EmployeeAvailabilities.OrderBy(a => a.DayOfWeek))
+                    {
+                        <li class="list-group-item">
+                            @availability.DayOfWeek: @availability.StartTime.ToString(@"hh\:mm") - @availability.EndTime.ToString(@"hh\:mm")
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span class="text-muted">Not specified</span>
+            }
         </td>
     </tr>
-
-    <!-- Duration -->
     <tr>
-        <th>Duration (in minutes)</th>
-        <td>
-            <div class="form-group">
-                <input asp-for="Duration" class="form-control" />
-                <span asp-validation-for="Duration" class="text-danger"></span>
-            </div>
-        </td>
-    </tr>
-
-    <!-- Price -->
-    <tr>
-        <th>Price ($)</th>
-        <td>
-            <div class="form-group">
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-        </td>
-    </tr>
-
-    <!-- Salon Selection -->
-    <tr>
-        <th>Select Salon</th>
-        <td>
-            <div class="form-group">
-                <select asp-for="SalonId" class="form-control" asp-items="ViewBag.SalonId"></select>
-            </div>
-        </td>
+        <th>Salon</th>
+        <td>@Model.Salon?.Name</td>
     </tr>
 </table>
 
-<form method="post" asp-action="Create">
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-        <a href="/Service/Index" class="btn btn-secondary">Cancel</a>
-    </div>
+<form method="post" asp-action="Delete" asp-route-id="@Model.EmployeeId">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/Employee/Index" class="btn btn-secondary">Cancel</a>
 </form>
-
-<style>
-    h2 {
-        font-size: 44px;
-        font-weight: bold;
-        color: darkviolet;
-        text-align: center;
-        margin-top: 35px;
-        margin-bottom: 35px;
-    }
-
-    .table {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    .form-control {
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        font-size: 16px;
-        width: 100%;
-    }
-
-    .form-group span.text-danger {
-        color: red;
-        font-size: 14px;
-    }
-
-    .btn {
-        padding: 10px 20px;
-        font-size: 18px;
-        border-radius: 5px;
-    }
-
-    .btn-primary {
-        background-color: purple;
-        color: white;
-        border: none;
-        transition: all 0.3
