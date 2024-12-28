@@ -18,10 +18,10 @@ namespace Hairdresser_Website.Controllers
         }
 
         // GET: api/<CustomersApiController>
-        [HttpGet]
-        public string Get()
+        [HttpGet("{id}")]
+        public IActionResult Get()
         {
-            return "geldi";
+            return RedirectToAction();
         }
 
         // DELETE api/<CustomersApiController>/5

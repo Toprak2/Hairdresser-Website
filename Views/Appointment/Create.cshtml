@@ -11,21 +11,28 @@
 }
 
 <div class="container mt-4">
-    <h2 class="mb-4">Book an Appointment</h2>
-    
+    <!-- Başlık yazısı 44px ve üstünde 30px boşluk -->
+    <div style="margin-top: 30px;">
+        <h2 class="mb-4 text-center" style="font-size: 44px; font-weight: bold; color: #4b0082;">Book an Appointment</h2>
+    </div>
+
     <form asp-controller="Appointment" asp-action="Create" method="post">
         <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
-        
-        <div class="row">
-            <div class="col-md-6 mb-3">
+
+        <!-- Salon seçimi -->
+        <div class="row mb-3" style="margin-bottom: 15px;">
+            <div class="col-md-12">
                 <label asp-for="Service.Salon.SalonId" class="form-label">Salon</label>
                 <select asp-for="Service.Salon.SalonId" class="form-select" asp-items="ViewBag.Salons" id="salonId">
                     <option value="">-- Select Salon --</option>
                 </select>
                 <span asp-validation-for="Service.Salon.SalonId" class="text-danger"></span>
             </div>
-
-            <div class="col-md-6 mb-3">
+        </div>
+        <hr> <!-- Çizgi eklendi -->
+        <!-- Service seçimi -->
+        <div class="row mb-3" style="margin-bottom: 15px;">
+            <div class="col-md-12">
                 <label asp-for="ServiceId" class="form-label">Service</label>
                 <select asp-for="ServiceId" class="form-select" id="serviceId">
                     <option value="">-- Select Service --</option>
@@ -33,54 +40,67 @@
                 <span asp-validation-for="ServiceId" class="text-danger"></span>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-6 mb-3">
+        <hr> <!-- Çizgi eklendi -->
+        <!-- Employee seçimi -->
+        <div class="row mb-3" style="margin-bottom: 15px;">
+            <div class="col-md-12">
                 <label asp-for="EmployeeId" class="form-label">Employee</label>
                 <select asp-for="EmployeeId" class="form-select" id="employeeId">
                     <option value="">-- Select Employee --</option>
                 </select>
                 <span asp-validation-for="EmployeeId" class="text-danger"></span>
             </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Price</label>
-                    <div class="form-control-plaintext" id="servicePrice">--</div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Duration</label>
-                    <div class="form-control-plaintext" id="serviceDuration">--</div>
-                </div>
+        </div>
+        <hr> <!-- Çizgi eklendi -->
+        <!-- Price -->
+        <div class="row mb-3" style="margin-bottom: 15px;">
+            <div class="col-md-12">
+                <label class="form-label">Price</label>
+                <div class="form-control-plaintext" id="servicePrice">--</div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-6 mb-3">
+        <hr> <!-- Çizgi eklendi -->
+        <!-- Duration -->
+        <div class="row mb-3" style="margin-bottom: 15px;">
+            <div class="col-md-12">
+                <label class="form-label">Duration</label>
+                <div class="form-control-plaintext" id="serviceDuration">--</div>
+            </div>
+        </div>
+        <hr> <!-- Çizgi eklendi -->
+        <!-- Appointment Date -->
+        <div class="row mb-3" style="margin-bottom: 15px;">
+            <div class="col-md-12">
                 <label asp-for="AppointmentDate" class="form-label">Date</label>
-                <input asp-for="AppointmentDate" type="date" class="form-control" id="appointmentDate" />
+                <input asp-for="AppointmentDate" type="date" class="form-control" id="appointmentDate" style="width: 40%;" />
                 <span asp-validation-for="AppointmentDate" class="text-danger"></span>
             </div>
-
-            <div class="col-md-6 mb-3">
+        </div>
+        <hr> <!-- Çizgi eklendi -->
+        <!-- Appointment Time -->
+        <div class="row mb-3" style="margin-bottom: 15px;">
+            <div class="col-md-12">
                 <label for="appointmentTime" class="form-label">Time</label>
                 <select id="appointmentTime" class="form-select" disabled>
                     <option value="">-- Select Date First --</option>
                 </select>
             </div>
         </div>
-
+        <hr> <!-- Çizgi eklendi -->
         <!-- Hidden input for the complete datetime -->
         <input asp-for="AppointmentDate" type="hidden" id="completeAppointmentDateTime" />
 
-        <div class="row mt-4">
-            <div class="col">
-                <button type="submit" class="btn btn-primary">Book Appointment</button>
-                <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancel</a>
+        <!-- Submit button -->
+        <div class="row mt-4" style="margin-bottom: 30px;">
+            <!-- Butondan sonra 30px boşluk -->
+            <div class="col text-center">
+                <!-- Updated button: larger size and centered -->
+                <button type="submit" class="btn" style="background-color: #4b0082; border-color: #4b0082; color: white; font-size: 2rem; padding: 15px 30px;">Book Appointment</button>
             </div>
         </div>
     </form>
 </div>
+
 
 @section Scripts {
     <script>

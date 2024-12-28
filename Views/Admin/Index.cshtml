@@ -3,7 +3,36 @@
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
-<h2>Welcome to the Admin Panel</h2>
-<p>Here, admins can manage salons, employees, services, and appointments.</p>
+<div class="container mt-4" style="margin-top: 45px; margin-bottom: 80px;">
+    <h2 class="mb-4 text-center" style="font-size: 44px; font-weight: bold; color: #4b0082;">Admin Paneline Hoş Geldiniz</h2>
+    <p class="text-center mb-4" style="margin-bottom: 20px;">TkHair ailesi olarak her zaman bize ulaşmak için aşağıdaki iletişim adreslerini kullanabilirsiniz.</p>
+    <!-- Button Container -->
+    <div class="row">
+        <div class="col-12" style="display: flex; justify-content: center;">
+            <!-- Buttons Wrapper -->
+            <div style="display: flex; gap: 30px; position: relative; right: 15px;">
+                <!-- Employees Button -->
+                <a href="@Url.Action("Index", "Employee")" class="btn btn-custom" style="background-color: #4b0082; color: white; font-size: 2rem; padding: 25px 45px; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">Employees</a>
+                <!-- Salons Button -->
+                <a href="@Url.Action("Index", "Salon")" class="btn btn-custom" style="background-color: #4b0082; color: white; font-size: 2rem; padding: 25px 45px; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">Salons</a>
+                <!-- Services Button -->
+                <a href="@Url.Action("Index", "Service")" class="btn btn-custom" style="background-color: #4b0082; color: white; font-size: 2rem; padding: 25px 45px; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">Services</a>
+                <!-- Appointments Button -->
+                <a href="@Url.Action("Create", "Appointment")" class="btn btn-custom" style="background-color: #4b0082; color: white; font-size: 2rem; padding: 25px 45px; text-decoration: none; border-radius: 5px; transition: background-color 0.3s ease;">Appointments</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-<a href="/User/Logout" class="btn btn-danger">Logout</a>
+<script>
+    // On hover, darken the button
+    const buttons = document.querySelectorAll('.btn-custom');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function () {
+            this.style.backgroundColor = '#3b0066';
+        });
+        button.addEventListener('mouseleave', function () {
+            this.style.backgroundColor = '#4b0082';
+        });
+    });
+</script>
