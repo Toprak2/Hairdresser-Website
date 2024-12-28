@@ -1,8 +1,46 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "AIHair";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>AIHair</h1>
+<h2>AIHair</h2>
 
+<form id="hairstyleForm" enctype="multipart/form-data" method="post" action="/Home/AIHair">
+    <input type="file" name="image" />
+    <select name="hairType">
+        <option value="101">Bangs</option>
+        <option value="201">Long Hair</option>
+        <option value="301">Bangs with Long Hair</option>
+        <option value="401">Medium Hair Increase</option>
+        <!-- Diğer seçenekler -->
+    </select>
+    <button type="submit">Change Hairstyle</button>
+</form>
+
+<div id="result"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $("#hairstyleForm").submit(function (e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: '/Home/AIHair',  // İlgili controller'ı buraya yazıyoruz
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    $("#result").html('<img src="data:image/png;base64,' + response.image + '" alt="Result Image" />');
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function () {
+                alert('Hata oluştu!');
+            }
+        });
+    });
+</script>
