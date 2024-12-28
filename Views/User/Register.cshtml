@@ -3,27 +3,39 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>Register</h2>
+<div class="container">
+    <div class="row min-vh-100 justify-content-center align-items-center">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center w-100">
+                <h2 class="mb-4" style="color: #6a0dad; font-size: 44px; font-weight: bold; margin-top: 60px;">Register</h2>
+                <br />
+                <form method="post" asp-action="Register" asp-controller="User" class="w-100" style="margin-top: 10px;">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" style="width: 80%;" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" style="width: 80%;" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" style="width: 80%;" required />
+                    </div>
+                    <button type="submit" class="btn mt-2 w-100 btn-lg" style="background-color: #6a0dad; border-color: #6a0dad; color: white;">Register</button>
+                </form>
 
-<form method="post" asp-action="Register" asp-controller="User">
-    <div class="form-group">
-        <label>Name</label>
-        <input type="text" name="name" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label>Email</label>
-        <input type="email" name="email" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        <input type="password" name="password" class="form-control" required />
-    </div>
-    <button type="submit" class="btn btn-primary mt-2">Register</button>
-</form>
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger mt-2">
+                        @Html.ValidationSummary(false)
+                    </div>
+                }
+            </div>
+        </div>
 
-@if (!ViewData.ModelState.IsValid)
-{
-    <div class="alert alert-danger mt-2">
-        @Html.ValidationSummary(false)
+        <div class="col-md-6">
+            <img src="~/assets/images/my/5.jpg" alt="Register Image" class="img-fluid rounded" />
+        </div>
     </div>
-}
+</div>

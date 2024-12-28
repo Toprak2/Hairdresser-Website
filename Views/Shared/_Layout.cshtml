@@ -63,11 +63,11 @@
 					<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 						<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
 							<li class="smooth-menu active"></li>
-							<li class="smooth-menu"><a href="@Url.Action("Index", "Home")">HOME</a></li>
-							<li class="smooth-menu"><a href="@Url.Action("Appointment", "Home")">APPOINTMENT</a></li>
-							<li class="smooth-menu"><a href="@Url.Action("AIHair", "Home")">AI HAIR</a></li>
-							<li class="smooth-menu"><a href="@Url.Action("User", "Admin")">USER LOGIN</a></li>
-							<li class="smooth-menu"><a href="@Url.Action("Admin", "Admin")">ADMIN LOGIN</a></li>
+							<li><a href="@Url.Action("Index", "Home")">HOME</a></li>
+							<li><a href="@Url.Action("Create", "Appointment")">APPOINTMENT</a></li>
+							<li><a href="@Url.Action("AIHair", "Home")">AI HAIR</a></li>
+							<li><a href="@Url.Action("Login", "User")">LOGIN</a></li>
+							<li><a href="@Url.Action("Register", "User")">Register</a></li>
 						</ul><!--/.nav -->
 					</div><!-- /.navbar-collapse -->
 				</div><!--/.container-->
@@ -213,6 +213,7 @@
 	<!--Custom JS-->
 	<script src="~/assets/js/custom.js"></script>
 
+	@RenderSection("Scripts", required: false)
 </body>
 
 </html>
