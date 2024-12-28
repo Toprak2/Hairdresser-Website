@@ -1,53 +1,138 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 @model IEnumerable<Hairdresser_Website.Models.Employee>
 
-<h2>Employees</h2>
-<a href="/Employee/Create" class="btn btn-primary mb-3">Add Employee</a>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Expertise</th>
-            <th>Availability</th>
-            <th>Salon</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var employee in Model)
-        {
-            <tr>
-                <td>@employee.Name</td>
-                <td>@employee.Expertise</td>
-                <td>
-                    @if (employee.EmployeeAvailabilities != null && employee.EmployeeAvailabilities.Any())
-                    {
-                        <ul class="list-group">
-                            @foreach (var availability in employee.EmployeeAvailabilities.OrderBy(a => a.DayOfWeek))
-                            {
-                                <li class="list-group-item">
-                                    @availability.DayOfWeek: @availability.StartTime.ToString(@"hh\:mm") - @availability.EndTime.ToString(@"hh\:mm")
-                                </li>
-                            }
-                        </ul>
-                    }
-                    else
-                    {
-                        <span class="text-muted">Not specified</span>
-                    }
-                </td>
-                <td>@employee.Salon.Name</td>
-                <td>
-                    <a href="/Employee/Edit/@employee.EmployeeId" class="btn btn-warning">Edit</a>
-                    <a href="/Employee/Delete/@employee.EmployeeId" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Employees başlığı için stil */
+        h2 {
+            font-size: 44px;
+            font-weight: bold;
+            color: darkviolet;
+            text-align: center;
+            margin-top: 35px;
+            margin-bottom: 35px;
         }
-    </tbody>
-</table>
+
+        /* Add Employee butonu için stil */
+        .add-employee-btn {
+            display: block;
+            margin: 30px auto; /* Ortalama için */
+            padding: 20px 40px; /* Butonu büyütmek için */
+            font-size: 20px; /* Yazı boyutunu artır */
+            color: white;
+            background-color: purple;
+            border: none;
+            border-radius: 8px; /* Daha yuvarlak köşeler */
+            text-align: center;
+            text-decoration: none; /* Alt çizgi kaldırıldı */
+            transition: background-color 0.3s;
+        }
+
+            .add-employee-btn:hover {
+                background-color: indigo; /* Hover için koyu mor */
+            }
+
+            .add-employee-btn:active {
+                background-color: indigo; /* Tıklandığında koyu mor */
+                color: white; /* Yazı rengi beyaz */
+            }
+
+        /* Edit ve Delete butonları için stil */
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: purple; /* Mor renk */
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+            .btn:hover {
+                background-color: indigo; /* Hover rengi */
+                transform: scale(1); /* Küçülmesin */
+            }
+
+        .btn-warning {
+            background-color: purple; /* Edit butonu için mor */
+        }
+
+        .btn-danger {
+            background-color: purple; /* Delete butonu için mor */
+        }
+
+        /* Tablo stili */
+        .table {
+            width: 80%; /* Tablo genişliğini %80 olarak ayarladık */
+            margin: auto; /* Ortalamak için */
+            border-collapse: collapse; /* Kenarlıkları birleştir */
+        }
+
+            .table th,
+            .table td {
+                border: 1px solid #ddd; /* Kenarlıklar */
+                padding: 8px; /* İç boşluk */
+                text-align: left;
+            }
+
+            .table th {
+                background-color: #f2f2f2; /* Başlık arka plan rengi */
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <h2>Employees</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>İsim</th>
+                <th>Uzmanlık</th>
+                <th>Müsaitlik</th>
+                <th>Salon</th>
+                <th>Aksiyonlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.Name</td>
+                    <td>@employee.Expertise</td>
+                    <td>
+                        @if (employee.EmployeeAvailabilities != null && employee.EmployeeAvailabilities.Any())
+                        {
+                            <ul class="list-group">
+                                @foreach (var availability in employee.EmployeeAvailabilities.OrderBy(a => a.DayOfWeek))
+                                {
+                                    <li class="list-group-item">
+                                        @availability.DayOfWeek: @availability.StartTime.ToString(@"hh\:mm") - @availability.EndTime.ToString(@"hh\:mm")
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Not specified</span>
+                        }
+                    </td>
+                    <td>@employee.Salon.Name</td>
+                    <td>
+                        <a href="/Employee/Edit/@employee.EmployeeId" class="btn btn-warning">Edit</a>
+                        <a href="/Employee/Delete/@employee.EmployeeId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Employee/Create" class="add-employee-btn">İşçi ekle</a>
+</body>
+</html>

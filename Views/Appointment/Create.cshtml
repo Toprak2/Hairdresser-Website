@@ -13,7 +13,7 @@
 <div class="container mt-4">
     <!-- Başlık yazısı 44px ve üstünde 30px boşluk -->
     <div style="margin-top: 30px;">
-        <h2 class="mb-4 text-center" style="font-size: 44px; font-weight: bold; color: #4b0082;">Book an Appointment</h2>
+        <h2 class="mb-4 text-center" style="font-size: 44px; font-weight: bold; color: #4b0082;">Sipariş oluşturma</h2>
     </div>
 
     <form asp-controller="Appointment" asp-action="Create" method="post">
@@ -33,7 +33,7 @@
         <!-- Service seçimi -->
         <div class="row mb-3" style="margin-bottom: 15px;">
             <div class="col-md-12">
-                <label asp-for="ServiceId" class="form-label">Service</label>
+                <label asp-for="ServiceId" class="form-label">Servisler</label>
                 <select asp-for="ServiceId" class="form-select" id="serviceId">
                     <option value="">-- Select Service --</option>
                 </select>
@@ -44,7 +44,7 @@
         <!-- Employee seçimi -->
         <div class="row mb-3" style="margin-bottom: 15px;">
             <div class="col-md-12">
-                <label asp-for="EmployeeId" class="form-label">Employee</label>
+                <label asp-for="EmployeeId" class="form-label">Çalışan</label>
                 <select asp-for="EmployeeId" class="form-select" id="employeeId">
                     <option value="">-- Select Employee --</option>
                 </select>
@@ -55,7 +55,7 @@
         <!-- Price -->
         <div class="row mb-3" style="margin-bottom: 15px;">
             <div class="col-md-12">
-                <label class="form-label">Price</label>
+                <label class="form-label">Ücret</label>
                 <div class="form-control-plaintext" id="servicePrice">--</div>
             </div>
         </div>
@@ -63,7 +63,7 @@
         <!-- Duration -->
         <div class="row mb-3" style="margin-bottom: 15px;">
             <div class="col-md-12">
-                <label class="form-label">Duration</label>
+                <label class="form-label">Süre</label>
                 <div class="form-control-plaintext" id="serviceDuration">--</div>
             </div>
         </div>
@@ -71,7 +71,7 @@
         <!-- Appointment Date -->
         <div class="row mb-3" style="margin-bottom: 15px;">
             <div class="col-md-12">
-                <label asp-for="AppointmentDate" class="form-label">Date</label>
+                <label asp-for="AppointmentDate" class="form-label">Tarih</label>
                 <input asp-for="AppointmentDate" type="date" class="form-control" id="appointmentDate" style="width: 40%;" />
                 <span asp-validation-for="AppointmentDate" class="text-danger"></span>
             </div>
@@ -80,7 +80,7 @@
         <!-- Appointment Time -->
         <div class="row mb-3" style="margin-bottom: 15px;">
             <div class="col-md-12">
-                <label for="appointmentTime" class="form-label">Time</label>
+                <label for="appointmentTime" class="form-label">Saat</label>
                 <select id="appointmentTime" class="form-select" disabled>
                     <option value="">-- Select Date First --</option>
                 </select>

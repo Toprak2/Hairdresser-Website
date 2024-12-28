@@ -3,46 +3,129 @@
 }
 @model IEnumerable<Hairdresser_Website.Models.Salon>
 
-<h2>Salons</h2>
-<a href="/Salon/Create" class="btn btn-primary mb-3">Add Salon</a>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Working Hours</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var salon in Model)
-        {
-            <tr>
-                <td>@salon.Name</td>
-                <td>@salon.Location</td>
-                <td>
-                    @if (salon.WorkingHours != null && salon.WorkingHours.Any())
-                    {
-                        <ul class="list-group">
-                            @foreach (var workingHours in salon.WorkingHours.OrderBy(wh => wh.DayOfWeek))
-                            {
-                                <li class="list-group-item">
-                                    @workingHours.DayOfWeek: @workingHours.StartTime.ToString(@"hh\:mm") - @workingHours.EndTime.ToString(@"hh\:mm")
-                                </li>
-                            }
-                        </ul>
-                    }
-                    else
-                    {
-                        <span class="text-muted">Not specified</span>
-                    }
-                </td>
-                <td>
-                    <a href="/Salon/Edit/@salon.SalonId" class="btn btn-warning">Edit</a>
-                    <a href="/Salon/Delete/@salon.SalonId" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Salons başlığı için stil */
+        h2 {
+            font-size: 44px;
+            font-weight: bold;
+            color: darkviolet;
+            text-align: center;
+            margin-top: 35px;
+            margin-bottom: 35px;
         }
-    </tbody>
-</table>
+
+        /* Add Salon butonu için stil */
+        .add-salon-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 20px 40px;
+            font-size: 20px;
+            color: white;
+            background-color: purple;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+            .add-salon-btn:hover {
+                background-color: indigo;
+                transform: scale(1);
+            }
+
+        /* Edit ve Delete butonları için stil */
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: purple;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: indigo;
+            }
+
+        .btn-warning {
+            background-color: purple;
+        }
+
+        .btn-danger {
+            background-color: purple;
+        }
+
+        /* Günler tablosu için stil */
+        .table {
+            width: 65%; /* Tablo genişliği %65 */
+            margin: 20px auto; /* Ortalamak için */
+            border-collapse: collapse; /* Kenarlıkları birleştir */
+        }
+
+            .table th,
+            .table td {
+                border: 1px solid #ddd; /* Kenarlıklar */
+                padding: 8px; /* İç boşluk */
+                text-align: left;
+            }
+
+            .table th {
+                background-color: #f2f2f2; /* Başlık arka plan rengi */
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <h2>Salonlar</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>İsim</th>
+                <th>Lokasyon</th>
+                <th>Çalışma Saatleri</th>
+                <th>Aksiyonlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var salon in Model)
+            {
+                <tr>
+                    <td>@salon.Name</td>
+                    <td>@salon.Location</td>
+                    <td>
+                        @if (salon.WorkingHours != null && salon.WorkingHours.Any())
+                        {
+                            <ul class="list-group">
+                                @foreach (var workingHours in salon.WorkingHours.OrderBy(wh => wh.DayOfWeek))
+                                {
+                                    <li class="list-group-item">
+                                        @workingHours.DayOfWeek: @workingHours.StartTime.ToString(@"hh\:mm") - @workingHours.EndTime.ToString(@"hh\:mm")
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Not specified</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="/Salon/Edit/@salon.SalonId" class="btn btn-warning">Edit</a>
+                        <a href="/Salon/Delete/@salon.SalonId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Salon/Create" class="add-salon-btn">Salon Ekle</a>
+</body>
+</html>
