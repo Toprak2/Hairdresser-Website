@@ -22,8 +22,33 @@ namespace Hairdresser_Website.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return RedirectToAction();
+            string userId = User.FindFirstValue("UserId");
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return NotFound(new { message = "Kullanıcı bulunamadı." });
+            }
+
+            // Kullanıcıya ait randevuları al
+            var appointments = await _context.Appointments
+                .Where(a => a.UserId == userId)
+                .Select(a => new
+                {
+                    a.AppointmentDate,
+                    a.AppointmentId
+                    
+                })
+                .ToListAsync();
+
+            if (!appointments.Any())
+            {
+                return NotFound(new { message = "Randevu bulunamadı." });
+            }
+
+            // Randevuları dizi olarak döndür
+            return Ok(appointments);
         }
+
 
         // DELETE api/<CustomersApiController>/5
         [HttpDelete("{id}")]

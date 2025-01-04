@@ -16,7 +16,7 @@ namespace Hairdresser_Website.Controllers
         public HomeController(IWebHostEnvironment environment)
         {
             _environment = environment;
-            var apiKey = "lxTWfs8FzMAwzViOeUphJQAYkrIo4YfESJp50vSjWdc4htvmqRK6LkynGCuUEHND";  // API anahtarınızı burada yazın
+            var apiKey = "Qjhf8uWAyLlgXqoSKOnNP7ZUek6iEHkCOMhq9dv5JjcFlHo4ar38dwU2IsS1gyAr";  // API anahtarınızı burada yazın
             _hairstyleApiService = new HairstyleApiService(apiKey);
         }
 

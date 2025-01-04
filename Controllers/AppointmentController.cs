@@ -49,16 +49,20 @@ namespace Hairdresser_Website.Controllers
             {
                 return RedirectToAction("Login", "Account", new { returnUrl = Url.Action("Create", "Appointment") });
             }
-
             // Combine date and time
             appointmentDate = appointmentDate.Date.Add(appointmentTime);
+            
             appointmentDate = DateTime.SpecifyKind(appointmentDate, DateTimeKind.Utc);
+
+            
 
             if (!IsAppointmentSlotAvailable(employeeId, appointmentDate, serviceId))
             {
                 TempData["Error"] = "The selected time slot is not available.";
                 return RedirectToAction(nameof(Create));
             }
+
+            appointmentDate = appointmentDate.AddHours(-3);
 
             // Create a new appointment without navigation properties
             var newAppointment = new Appointment
@@ -87,59 +91,87 @@ namespace Hairdresser_Website.Controllers
         {
             try
             {
-                // Get service duration
                 var service = _context.Services.Find(serviceId);
                 if (service == null)
                 {
-                    // Log or handle service not found
+                    Console.WriteLine("Service not found!");
                     return false;
                 }
                 int serviceDuration = service.Duration;
 
-                // Check for overlapping appointments (there shouldn't be any as DB is empty)
-                bool hasOverlap = _context.Appointments.Any(a =>
-                    a.EmployeeId == employeeId &&
-                    a.AppointmentDate.Date == appointmentDate.Date &&
-                    !(appointmentDate.AddMinutes(serviceDuration) <= a.AppointmentDate ||
-                      appointmentDate >= a.AppointmentDate.AddMinutes(a.Service.Duration)));
+                // Convert appointmentDate to UTC for comparison with database values
+                DateTime appointmentDateUtc = appointmentDate.AddHours(-3);
 
-                // Get day of week (0 = Sunday, 1 = Monday, etc.)
+
+                // Log the requested appointment details
+                Console.WriteLine("\n=== Requested Appointment Details ===");
+                Console.WriteLine($"Requested Date/Time (Local): {appointmentDate}");
+                Console.WriteLine($"Requested Date/Time (UTC): {appointmentDateUtc}");
+                Console.WriteLine($"Service Duration: {serviceDuration} minutes");
+                Console.WriteLine($"Appointment End Time (UTC): {appointmentDateUtc.AddMinutes(serviceDuration)}");
+
+                // Get and log all appointments for this employee on this date
+                var existingAppointments = _context.Appointments
+                    .Where(a => a.EmployeeId == employeeId)
+                               //a.AppointmentDate.Date == appointmentDateUtc.Date)  // Compare UTC dates
+                    .Include(a => a.Service)
+                    .ToList();
+
+                Console.WriteLine("\n=== Existing Appointments ===");
+                foreach (var apt in existingAppointments)
+                {
+                    Console.WriteLine($"\nAppointment ID: {apt.AppointmentId}");
+                    Console.WriteLine($"Start Time (UTC): {apt.AppointmentDate}");
+                    Console.WriteLine($"Start Time (Local): {apt.AppointmentDate}");
+                    Console.WriteLine($"Duration: {apt.Service.Duration} minutes");
+                    Console.WriteLine($"End Time (UTC): {apt.AppointmentDate.AddMinutes(apt.Service.Duration)}");
+
+                    // Check overlap using UTC times
+                    bool overlapsWithThis = !(
+                        appointmentDateUtc.AddMinutes(serviceDuration) <= apt.AppointmentDate ||
+                        appointmentDateUtc >= apt.AppointmentDate.AddMinutes(apt.Service.Duration)
+                    );
+
+                    Console.WriteLine($"Overlaps with requested appointment: {overlapsWithThis}");
+                }
+
+                bool hasOverlap = existingAppointments.Any(a =>
+                    !(appointmentDateUtc.AddMinutes(serviceDuration) <= a.AppointmentDate ||
+                      appointmentDateUtc >= a.AppointmentDate.AddMinutes(a.Service.Duration)));
+
+                // Availability check using local time
                 var dayOfWeek = (Models.DayOfWeek)appointmentDate.DayOfWeek;
                 var timeOfDay = appointmentDate.TimeOfDay;
 
-                // Check employee availability
                 var availability = _context.EmployeeAvailability
                     .FirstOrDefault(ea =>
                         ea.EmployeeId == employeeId &&
                         ea.DayOfWeek == dayOfWeek);
 
-                if (availability == null)
+                Console.WriteLine("\n=== Employee Availability Check ===");
+                Console.WriteLine($"Day of Week: {dayOfWeek}");
+                Console.WriteLine($"Time of Day: {timeOfDay}");
+                if (availability != null)
                 {
-                    // Log that no availability was found for this day
-                    return false;
+                    Console.WriteLine($"Employee Start Time: {availability.StartTime}");
+                    Console.WriteLine($"Employee End Time: {availability.EndTime}");
+                    Console.WriteLine($"Service End Time: {timeOfDay.Add(TimeSpan.FromMinutes(serviceDuration))}");
                 }
 
-                bool isEmployeeAvailable =
+                bool isEmployeeAvailable = availability != null &&
                     timeOfDay >= availability.StartTime &&
                     timeOfDay.Add(TimeSpan.FromMinutes(serviceDuration)) <= availability.EndTime;
 
-                // For debugging
-                Console.WriteLine($"Employee: {employeeId}");
-                Console.WriteLine($"Date: {appointmentDate}");
-                Console.WriteLine($"Day of Week: {dayOfWeek}");
-                Console.WriteLine($"Time of Day: {timeOfDay}");
-                Console.WriteLine($"Service Duration: {serviceDuration}");
+                Console.WriteLine("\n=== Final Results ===");
                 Console.WriteLine($"Has Overlap: {hasOverlap}");
-                Console.WriteLine($"Availability Found: {availability != null}");
-                Console.WriteLine($"Start Time: {availability?.StartTime}");
-                Console.WriteLine($"End Time: {availability?.EndTime}");
                 Console.WriteLine($"Is Employee Available: {isEmployeeAvailable}");
+                Console.WriteLine($"Final Result: {isEmployeeAvailable && !hasOverlap}");
+                Console.WriteLine("=====================================\n");
 
                 return isEmployeeAvailable && !hasOverlap;
             }
             catch (Exception ex)
             {
-                // Log the exception
                 Console.WriteLine($"Error in IsAppointmentSlotAvailable: {ex.Message}");
                 return false;
             }
